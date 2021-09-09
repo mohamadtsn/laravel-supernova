@@ -1,0 +1,32 @@
+{
+    "name": "mohamadtsn/laravel-supernova",
+    "description": "it's a basic Management panel for laravel application",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["laravel", "laravel-supernova", "laravel8-package", "PHP", "laravel8", "admin-panel", "laravel admin", "laravel-metronic", "laravel-admin-panel"],
+    "homepage": "https://github.com/mohamadtsn/laravel-supernova",
+    "authors": [
+        {
+            "name": "Mohamad Borzoyi",
+            "email": "mohamad.borzoyi@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.3",
+        "spatie/laravel-permission": "^3.16",
+        "yoeunes/toastr": "^1.2"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "MohamadTsn\\Metronic-Panel-Laravel\\": "src/"
+        }
+    } ,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mohamadtsn\\Laravel-Supernova\\MetronicServiceProvider"
+            ]
+        }
+    }
+}

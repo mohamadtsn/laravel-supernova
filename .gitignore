@@ -1,0 +1,4 @@
+/.idea
+.phpstorm.meta.php
+composer.phar
+composer.lock
