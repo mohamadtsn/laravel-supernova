@@ -19,13 +19,13 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Mohamadtsn\\LaravelSupernova\\": "src/"
+            "Mohamadtsn\\Supernova\\": "src/"
         }
     } ,
     "extra": {
         "laravel": {
             "providers": [
-                "Mohamadtsn\\LaravelSupernova\\MetronicServiceProvider"
+                "Mohamadtsn\\Supernova\\MetronicServiceProvider"
             ]
         }
     }

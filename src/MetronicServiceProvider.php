@@ -1,6 +1,6 @@
 <?php
 
-namespace Amiranbari\Metronic;
+namespace Mohamadtsn\Supernova;
 
 use Illuminate\Support\ServiceProvider;
 
