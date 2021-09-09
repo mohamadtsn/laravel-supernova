@@ -16,14 +16,6 @@ composer require mohamadtsn/laravel-supernova
 ```
 
 ## configuration: :gear:
-:electric_plug: (For Laravel <=5.4) Next, you must add the service provider to `config/app.php` :electric_plug:
-```php
-'providers' => [
-    // for laravel 5.4 and below
-    App\Providers\MetronicServiceProvider::class,
-];
-```
-
 __Publish config file__
 ```bash
 php artisan vendor:publish --tag=supernova-config --force
@@ -32,6 +24,14 @@ php artisan vendor:publish --tag=supernova-config --force
 Change locale to `fa` in `config/app.php`
 ```php
 'locale' => 'fa',
+```
+
+:electric_plug: (For Laravel <=5.4) Next, you must add the service provider to `config/app.php` :electric_plug:
+```php
+'providers' => [
+    // for laravel 5.4 and below
+    App\Providers\MetronicServiceProvider::class,
+];
 ```
 
 Add this to your `Aliases` in `config/app.php`
