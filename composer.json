@@ -19,7 +19,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "MohamadTsn\\Metronic-Panel-Laravel\\": "src/"
+            "Mohamadtsn\\Laravel-Supernova\\": "src/"
         }
     } ,
     "extra": {
