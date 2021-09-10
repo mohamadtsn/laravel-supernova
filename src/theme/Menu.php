@@ -451,15 +451,14 @@ class Menu
         self::checkRecursion($rec);
 
         if (isset($item['page'])) {
-
             if (is_array($item['page'])) {
-                return in_array(self::cleanup_numbers($page), array_map(static function ($item) {
-                    $item = (Str::startsWith($item, '/')) ? Str::replaceFirst('/', '', $item) : $item;
-                    return self::cleanup_numbers($item);
+                $page = self::cleanupSlashEnd(self::cleanupSlashStart(self::cleanupNumbers($page)));
+                return in_array($page, array_map(static function ($item) {
+                    return self::cleanupNumbers(self::cleanupSlashEnd(self::cleanupSlashStart($item)));
                 }, $item['page']), true);
             }
 
-            if ($item['page'] === (string)$page) {
+            if ($item['page'] === $page) {
                 return true;
             }
         }
@@ -478,12 +477,30 @@ class Menu
     /**
      * clean string from numbers for menu which has array of page for active
      * @param string $string
-     * @return array|string|string[]
+     * @return string
      */
-    public static function cleanup_numbers(string $string)
+    public static function cleanupNumbers(string $string): string
     {
-        $numbers = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ");
-        return str_replace($numbers, '', $string);
+        $numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " "];
+        return Str::replace('//', '/', Str::replace($numbers, '', $string));
+    }
+
+    /**
+     * @param string $string
+     * @return string
+     */
+    public static function cleanupSlashEnd(string $string): string
+    {
+        return (Str::endsWith(self::cleanupNumbers($string), '/')) ? Str::replaceLast('/', '', $string) : $string;
+    }
+
+    /**
+     * @param string $string
+     * @return string
+     */
+    public static function cleanupSlashStart(string $string): string
+    {
+        return (Str::startsWith($string, '/')) ? Str::replaceFirst('/', '', $string) : $string;
     }
 
     /**
