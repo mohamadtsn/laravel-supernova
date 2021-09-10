@@ -7,7 +7,7 @@ return [
         [
             'title' => 'داشبورد',
             'icon' => 'media/svg/icons/Design/Layers.svg',
-            'page' => 'panel',
+            'page' => '/',
             'new-tab' => false
         ],
 
@@ -20,8 +20,8 @@ return [
             'icon' => 'media/svg/icons/Communication/Group.svg',
             'bullet' => 'line',
             'page' => [
-                'panel/managers',
-                'panel/managers/create'
+                '/managers',
+                '/managers/create'
             ]
         ],
         [
@@ -29,8 +29,8 @@ return [
             'icon' => 'media/svg/icons/General/Visible.svg',
             'bullet' => 'dot',
             'page' => [
-                'panel/roles',
-                'panel/roles/create'
+                '/roles',
+                '/roles/create'
             ]
         ],
 

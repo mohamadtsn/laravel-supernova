@@ -93,14 +93,14 @@ class Metronic
     {
         $themes = [];
 
-        $themes[] = 'css/themes/layout/header/base/' . config('layout.header.self.theme') . '.css';
-        $themes[] = 'css/themes/layout/header/menu/' . config('layout.header.menu.desktop.submenu.theme') . '.css';
-        $themes[] = 'css/themes/layout/aside/' . config('layout.aside.self.theme') . '.css';
+        $themes[] = 'panel/css/themes/layout/header/base/' . config('layout.header.self.theme') . '.css';
+        $themes[] = 'panel/css/themes/layout/header/menu/' . config('layout.header.menu.desktop.submenu.theme') . '.css';
+        $themes[] = 'panel/css/themes/layout/aside/' . config('layout.aside.self.theme') . '.css';
 
         if (config('layout.aside.self.display')) {
-            $themes[] = 'css/themes/layout/brand/' . config('layout.brand.self.theme') . '.css';
+            $themes[] = 'panel/css/themes/layout/brand/' . config('layout.brand.self.theme') . '.css';
         } else {
-            $themes[] = 'css/themes/layout/brand/' . config('layout.header.self.theme') . '.css';
+            $themes[] = 'panel/css/themes/layout/brand/' . config('layout.header.self.theme') . '.css';
         }
 
         return $themes;

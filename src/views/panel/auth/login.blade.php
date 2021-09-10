@@ -38,7 +38,7 @@
                             @csrf
                             <div class="form-group">
                                 <label class="font-size-h6 font-weight-bolder text-dark">نام کاربری</label>
-                                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0"
+                                <input dir="ltr" style="direction: ltr" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0"
                                        type="text" name="username" autocomplete="off" />
                             </div>
 
@@ -49,7 +49,7 @@
                                         رمز عبور خود را فراموش کرده اید؟
                                     </a>
                                 </div>
-                                <input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0"
+                                <input dir="ltr" style="direction: ltr" class="form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0"
                                        type="password" name="password" autocomplete="off" />
                             </div>
 
@@ -64,10 +64,7 @@
             </div>
 
             <div class="login-aside order-1 order-lg-2 bgi-no-repeat bgi-position-x-right">
-                <div class="login-conteiner bgi-no-repeat bgi-position-x-right bgi-position-y-bottom" style="background-image: url({{ asset('panel/media/svg/illustrations/login-visual-4.svg') }});">
-                    <h4 class="pt-lg-40 pl-lg-20 pb-lg-0 pl-10 py-20 m-0 d-flex justify-content-lg-start font-weight-boldest display5 display1-lg text-white">
-                        ورود<br />به<br />مدیریت</h4>
-                </div>
+                <div class="login-conteiner bgi-no-repeat bgi-position-x-right bgi-position-y-bottom" style="background-image: url({{ asset('panel/media/svg/illustrations/login-visual-4.svg') }});"></div>
             </div>
         </div>
     </div>

@@ -16,14 +16,6 @@ composer require mohamadtsn/laravel-supernova
 ```
 
 ## configuration: :gear:
-:electric_plug: (For Laravel <=5.4) Next, you must add the service provider to `config/app.php` :electric_plug:
-```php
-'providers' => [
-    // for laravel 5.4 and below
-    App\Providers\MetronicServiceProvider::class,
-];
-```
-
 __Publish config file__
 ```bash
 php artisan vendor:publish --tag=supernova-config --force
@@ -32,6 +24,14 @@ php artisan vendor:publish --tag=supernova-config --force
 Change locale to `fa` in `config/app.php`
 ```php
 'locale' => 'fa',
+```
+
+:electric_plug: (For Laravel <=5.4) Next, you must add the service provider to `config/app.php` :electric_plug:
+```php
+'providers' => [
+    // for laravel 5.4 and below
+    App\Providers\MetronicServiceProvider::class,
+];
 ```
 
 Add this to your `Aliases` in `config/app.php`
@@ -126,6 +126,24 @@ protected function redirectTo($request)
 }
 ```
 
+add admin panel routes file `routes/admin.php` to `App/Providers/RouteServiceProvider.php` in `boot()` method
+<p>
+<span style="font-weight: bold;color: #ff5b5d">IMPORTANT!!</span> Be sure to add before `web.php`.
+</p>
+Look carefully:
+
+```php
+public function boot()
+{
+    $this->routes(function () {
+        // other routes file
+        Route::middleware('web')->namespace($this->namespace)->group(base_path('routes/admin.php')); // #1 add admin panel routes
+        
+        Route::middleware('web')->namespace($this->namespace)->group(base_path('routes/web.php')); // #2 web.php routes
+    });
+}
+```
+
 ### Setup Schema:
 1) Set database config connection in `.env` file
 2) Migrate and seeding using the following commands:
@@ -144,7 +162,7 @@ php artisan migrate --seed              // "Without" Drop All Tables & Migrate a
 ## Usage
 ### Method #1  ====> Setup with virtual host
 - Build a `virtual subdomain` with name `Management`
-- **Example:**
+  <p style="font-weight: bold;color: #00b300">Example:</p>
   - origin domain => `shop.test`        // Main URL
   - subdomain domain => `management.shop.test`     // Admin Panel URL
 
@@ -172,7 +190,8 @@ php artisan migrate --seed              // "Without" Drop All Tables & Migrate a
 ```bash
 php artisan serve
 ```
-3) Go to `127.0.0.1:8000/panel/login`
+3) <span><span style="font-weight: bold;color: #00b300;font-size: 15px">Tip:</span> You have access to `Supernova Panel Routes` only with Prefix `panel`</span>
+4) Go to `127.0.0.1:8000/panel/login`
 -----------------
 ## Login to Panel
 * Email: `admin@gmail.com`
