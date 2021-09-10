@@ -39,7 +39,7 @@
         @endif
 
         <button class="btn btn-hover-text-primary p-0 ml-2" id="kt_header_mobile_topbar_toggle">
-            {{ Metronic::getSVG('media/svg/icons/General/User.svg', 'svg-icon-xl') }}
+            {{ Metronic::getSVG('panel/media/svg/icons/General/User.svg', 'svg-icon-xl') }}
         </button>
 
     </div>

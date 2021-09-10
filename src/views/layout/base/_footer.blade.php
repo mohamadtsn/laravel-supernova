@@ -6,7 +6,7 @@
         {{-- Copyright --}}
         <div class="text-dark order-2 order-md-1">
             <span class="text-muted font-weight-bold mr-2">{{ date("Y") }} &copy;</span>
-            <a href="https://keenthemes.com/metronic" target="_blank" class="text-dark-75 text-hover-primary">طراحی شده توسط امیرحسین عنبری</a>
+            <a href="https://github.com/mohamadtsn/" target="_blank" class="text-dark-75 text-hover-primary">توسعه داده شده توسط mohamadtsn@ با <i class="fa fa-heart text-danger"></i></a>
         </div>
 
         {{-- Nav --}}

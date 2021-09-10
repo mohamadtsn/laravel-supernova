@@ -5,7 +5,7 @@
         <div class="input-group rounded bg-light">
             <div class="input-group-prepend">
                 <span class="input-group-text">
-                    {{ Metronic::getSVG("media/svg/icons/General/Search.svg", "svg-icon-lg") }}
+                    {{ Metronic::getSVG("panel/media/svg/icons/General/Search.svg", "svg-icon-lg") }}
                 </span>
             </div>
 

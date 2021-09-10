@@ -54,7 +54,7 @@
                 {{-- Symbol --}}
                 <div class="symbol symbol-40 symbol-light-primary mr-5">
                     <span class="symbol-label">
-                        {{ Metronic::getSVG("media/svg/icons/Home/Library.svg", "svg-icon-lg svg-icon-primary") }}
+                        {{ Metronic::getSVG("panel/media/svg/icons/Home/Library.svg", "svg-icon-lg svg-icon-primary") }}
                     </span>
                 </div>
 

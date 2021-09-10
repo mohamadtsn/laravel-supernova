@@ -11,7 +11,7 @@
                         {{-- Dropdown Menu  --}}
                         <div class="dropdown dropdown-inline">
                             <button type="button" class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ Metronic::getSVG("media/svg/icons/Communication/Add-user.svg", "svg-icon-lg") }}
+                                {{ Metronic::getSVG("panel/media/svg/icons/Communication/Add-user.svg", "svg-icon-lg") }}
                             </button>
                             <div class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-md">
                                 {{-- Navigation--}}

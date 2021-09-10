@@ -34,7 +34,7 @@
 
             <div class="dropdown dropdown-inline" data-toggle="tooltip" title="Quick actions" data-placement="left">
                 <a href="#" class="btn btn-sm btn-clean btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{ Metronic::getSVG( "media/svg/icons/Files/File-plus.svg", "svg-icon-success svg-icon-lg") }}
+                    {{ Metronic::getSVG( "panel/media/svg/icons/Files/File-plus.svg", "svg-icon-success svg-icon-lg") }}
                 </a>
                 <div class="dropdown-menu p-0 m-0 dropdown-menu-sm dropdown-menu-right py-3">
                     <ul class="navi navi-hover py-5">

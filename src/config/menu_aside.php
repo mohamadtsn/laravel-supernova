@@ -6,7 +6,7 @@ return [
         // Dashboard
         [
             'title' => 'داشبورد',
-            'icon' => 'media/svg/icons/Design/Layers.svg',
+            'icon' => 'panel/media/svg/icons/Design/Layers.svg',
             'page' => '/',
             'new-tab' => false
         ],
@@ -17,7 +17,7 @@ return [
         ],
         [
             'title' => 'مدیران',
-            'icon' => 'media/svg/icons/Communication/Group.svg',
+            'icon' => 'panel/media/svg/icons/Communication/Group.svg',
             'bullet' => 'line',
             'page' => [
                 '/managers',
@@ -26,7 +26,7 @@ return [
         ],
         [
             'title' => 'نقش ها',
-            'icon' => 'media/svg/icons/General/Visible.svg',
+            'icon' => 'panel/media/svg/icons/General/Visible.svg',
             'bullet' => 'dot',
             'page' => [
                 '/roles',
@@ -38,7 +38,7 @@ return [
 
         /*[
             'title' => 'Applications',
-            'icon' => 'media/svg/icons/Layout/Layout-4-blocks.svg',
+            'icon' => 'panel/media/svg/icons/Layout/Layout-4-blocks.svg',
             'bullet' => 'line',
             'root' => true,
             'submenu' => [

@@ -50,7 +50,7 @@
 
             <div class="dropdown dropdown-inline" data-toggle="tooltip" title="Quick actions" data-placement="left">
                 <a href="#" class="btn btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{ Metronic::getSVG( "media/svg/icons/Files/File-plus.svg", "svg-icon-success svg-icon-2x") }}
+                    {{ Metronic::getSVG( "panel/media/svg/icons/Files/File-plus.svg", "svg-icon-success svg-icon-2x") }}
                     {{-- <i class="flaticon2-plus"></i> --}}
                 </a>
                 <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right">
