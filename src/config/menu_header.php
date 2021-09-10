@@ -7,13 +7,13 @@ return [
         [
             'title' => 'داشبورد',
             'root' => true,
-            'page' => '/panel',
+            'page' => '/',
             'new-tab' => false,
         ],
         [
             'title' => 'مدیران',
             'root' => true,
-            'page' => '/panel/managers',
+            'page' => '/managers',
             'new-tab' => false,
         ]
     ]

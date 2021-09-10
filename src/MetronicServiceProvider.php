@@ -38,5 +38,9 @@ class MetronicServiceProvider extends ServiceProvider
             __DIR__.'/administrator_without_virtual_host.php' => base_path('routes/admin.php'),
         ], 'basic-routes');
 
+        $this->publishes([
+            __DIR__.'/administrator_with_virtual_host.php' => base_path('routes/admin.php'),
+        ], 'virtual-host-routes');
+
     }
 }
