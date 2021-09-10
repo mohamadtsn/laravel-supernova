@@ -20,7 +20,7 @@
 			{{-- Item --}}
 			<div class="col-6">
 				<a href="#" class="btn btn-block btn-light btn-hover-primary text-dark-50 text-center py-10 px-5">
-		            {{ Metronic::getSVG("media/svg/icons/Shopping/Euro.svg", "svg-icon-3x svg-icon-primary m-0") }}
+		            {{ Metronic::getSVG("panel/media/svg/icons/Shopping/Euro.svg", "svg-icon-3x svg-icon-primary m-0") }}
 		            <span class="d-block font-weight-bold font-size-h6 mt-2">Accounting</span>
 		        </a>
 			</div>
@@ -28,7 +28,7 @@
 			{{-- Item --}}
 			<div class="col-6">
 				<a href="#" class="btn btn-block btn-light btn-hover-primary text-dark-50 text-center py-10 px-5">
-		            {{ Metronic::getSVG("media/svg/icons/Communication/Mail-attachment.svg", "svg-icon-3x svg-icon-primary m-0") }}
+		            {{ Metronic::getSVG("panel/media/svg/icons/Communication/Mail-attachment.svg", "svg-icon-3x svg-icon-primary m-0") }}
 		            <span class="d-block font-weight-bold font-size-h6 mt-2">Members</span>
 		        </a>
 			</div>
@@ -37,7 +37,7 @@
 			{{-- Item --}}
 			<div class="col-6">
 				<a href="#" class="btn btn-block btn-light btn-hover-primary text-dark-50 text-center py-10 px-5">
-		            {{ Metronic::getSVG("media/svg/icons/Shopping/Box2.svg", "svg-icon-3x svg-icon-primary m-0") }}
+		            {{ Metronic::getSVG("panel/media/svg/icons/Shopping/Box2.svg", "svg-icon-3x svg-icon-primary m-0") }}
 		            <span class="d-block font-weight-bold font-size-h6 mt-2">Projects</span>
 		        </a>
 			</div>
@@ -45,7 +45,7 @@
 			{{-- Item --}}
 			<div class="col-6">
 				<a href="#" class="btn btn-block btn-light btn-hover-primary text-dark-50 text-center py-10 px-5">
-		            {{ Metronic::getSVG("media/svg/icons/Communication/Group.svg", "svg-icon-3x svg-icon-primary m-0") }}
+		            {{ Metronic::getSVG("panel/media/svg/icons/Communication/Group.svg", "svg-icon-3x svg-icon-primary m-0") }}
 		            <span class="d-block font-weight-bold font-size-h6 mt-2">Customers</span>
 		        </a>
 			</div>
@@ -54,7 +54,7 @@
 			{{-- Item --}}
 			<div class="col-6">
 				<a href="#" class="btn btn-block btn-light btn-hover-primary text-dark-50 text-center py-10 px-5">
-		            {{ Metronic::getSVG("media/svg/icons/Shopping/Chart-bar1.svg", "svg-icon-3x svg-icon-primary m-0") }}
+		            {{ Metronic::getSVG("panel/media/svg/icons/Shopping/Chart-bar1.svg", "svg-icon-3x svg-icon-primary m-0") }}
 		            <span class="d-block font-weight-bold font-size-h6 mt-2">Email</span>
 		        </a>
 			</div>
@@ -62,7 +62,7 @@
 			{{-- Item --}}
 			<div class="col-6">
 				<a href="#" class="btn btn-block btn-light btn-hover-primary text-dark-50 text-center py-10 px-5">
-		            {{ Metronic::getSVG("media/svg/icons/Design/Color-profile.svg", "svg-icon-3x svg-icon-primary m-0") }}
+		            {{ Metronic::getSVG("panel/media/svg/icons/Design/Color-profile.svg", "svg-icon-3x svg-icon-primary m-0") }}
 		            <span class="d-block font-weight-bold font-size-h6 mt-2">Settings</span>
 		        </a>
 			</div>
@@ -71,7 +71,7 @@
 			{{-- Item --}}
 			<div class="col-6">
 				<a href="#" class="btn btn-block btn-light btn-hover-primary text-dark-50 text-center py-10 px-5">
-		            {{ Metronic::getSVG("media/svg/icons/Shopping/Euro.svg", "svg-icon-3x svg-icon-primary m-0") }}
+		            {{ Metronic::getSVG("panel/media/svg/icons/Shopping/Euro.svg", "svg-icon-3x svg-icon-primary m-0") }}
 		            <span class="d-block font-weight-bold font-size-h6 mt-2">Orders</span>
 		        </a>
 			</div>

@@ -76,7 +76,7 @@
             {{-- Symbol --}}
             <div class="symbol symbol-40 symbol-light-primary mr-5">
                 <span class="symbol-label">
-                    {{ Metronic::getSVG("media/svg/icons/Home/Library.svg", "svg-icon-lg svg-icon-primary") }}
+                    {{ Metronic::getSVG("panel/media/svg/icons/Home/Library.svg", "svg-icon-lg svg-icon-primary") }}
                 </span>
             </div>
 
@@ -92,7 +92,7 @@
             {{-- Symbol --}}
             <div class="symbol symbol-40 symbol-light-warning mr-5">
                 <span class="symbol-label">
-                    {{ Metronic::getSVG("media/svg/icons/Communication/Write.svg", "svg-icon-lg svg-icon-warning") }}
+                    {{ Metronic::getSVG("panel/media/svg/icons/Communication/Write.svg", "svg-icon-lg svg-icon-warning") }}
                 </span>
             </div>
 
@@ -108,7 +108,7 @@
             {{-- Symbol --}}
             <div class="symbol symbol-40 symbol-light-success mr-5">
                 <span class="symbol-label">
-                    {{ Metronic::getSVG("media/svg/icons/Communication/Group-chat.svg", "svg-icon-lg svg-icon-success") }}
+                    {{ Metronic::getSVG("panel/media/svg/icons/Communication/Group-chat.svg", "svg-icon-lg svg-icon-success") }}
                 </span>
             </div>
 
@@ -124,7 +124,7 @@
             {{-- Symbol --}}
             <div class="symbol symbol-40 symbol-light-danger mr-5">
                 <span class="symbol-label">
-                    {{ Metronic::getSVG("media/svg/icons/General/Attachment2.svg", "svg-icon-lg svg-icon-danger") }}
+                    {{ Metronic::getSVG("panel/media/svg/icons/General/Attachment2.svg", "svg-icon-lg svg-icon-danger") }}
                 </span>
             </div>
 
@@ -140,7 +140,7 @@
             {{-- Symbol --}}
             <div class="symbol symbol-40 symbol-light-info mr-5">
                 <span class="symbol-label">
-                    {{ Metronic::getSVG("media/svg/icons/Communication/Shield-user.svg", "svg-icon-lg  svg-icon-info") }}
+                    {{ Metronic::getSVG("panel/media/svg/icons/Communication/Shield-user.svg", "svg-icon-lg  svg-icon-info") }}
                 </span>
             </div>
 

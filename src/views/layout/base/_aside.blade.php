@@ -22,7 +22,7 @@
 
         @if (config('layout.aside.self.minimize.toggle'))
             <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
-                {{ Metronic::getSVG("media/svg/icons/Navigation/Angle-double-left.svg", "svg-icon-xl") }}
+                {{ Metronic::getSVG("panel/media/svg/icons/Navigation/Angle-double-left.svg", "svg-icon-xl") }}
             </button>
         @endif
 

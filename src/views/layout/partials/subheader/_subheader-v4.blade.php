@@ -15,7 +15,7 @@
                 <input type="text" class="form-control pl-4" placeholder="Search..."/>
                 <div class="input-group-append">
                     <span class="input-group-text">
-                        {{ Metronic::getSVG("media/svg/icons/General/Search.svg", "svg-icon-md") }}
+                        {{ Metronic::getSVG("panel/media/svg/icons/General/Search.svg", "svg-icon-md") }}
                     </span>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                     <span class="text-muted font-weight-bold" id="kt_dashboard_daterangepicker_title">Today</span>&nbsp;
                     <span class="text-primary font-weight-bold" id="kt_dashboard_daterangepicker_date">Aug 16</span>
                     {{--<i class="flaticon2-calendar-1"></i>--}}
-                    {{ Metronic::getSVG("media/svg/icons/Communication/Chat-check.svg", "svg-icon-sm svg-icon-primary ml-1") }}
+                    {{ Metronic::getSVG("panel/media/svg/icons/Communication/Chat-check.svg", "svg-icon-sm svg-icon-primary ml-1") }}
                 </a>
             @endif
 

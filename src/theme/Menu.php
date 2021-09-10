@@ -3,6 +3,7 @@ namespace App\Classes\Theme;
 
 use App\Classes\Theme\Metronic;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 class Menu
 {
@@ -452,12 +453,13 @@ class Menu
         if (isset($item['page'])) {
 
             if (is_array($item['page'])) {
-                return in_array(self::cleanup_numbers($page), array_map(function ($item) {
+                return in_array(self::cleanup_numbers($page), array_map(static function ($item) {
+                    $item = (Str::startsWith($item, '/')) ? Str::replaceFirst('/', '', $item) : $item;
                     return self::cleanup_numbers($item);
                 }, $item['page']), true);
             }
 
-            if ($item['page'] == $page) {
+            if ($item['page'] === (string)$page) {
                 return true;
             }
         }

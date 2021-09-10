@@ -71,13 +71,13 @@
                         </td>
                         <td class="text-right pr-0">
                             <a href="#" class="btn btn-icon btn-light btn-sm">
-                                {{ Metronic::getSVG("media/svg/icons/General/Settings-1.svg", "svg-icon-md svg-icon-primary") }}
+                                {{ Metronic::getSVG("panel/media/svg/icons/General/Settings-1.svg", "svg-icon-md svg-icon-primary") }}
                             </a>
                             <a href="#" class="btn btn-icon btn-light btn-sm mx-3">
-                                {{ Metronic::getSVG("media/svg/icons/Communication/Write.svg", "svg-icon-md svg-icon-primary") }}
+                                {{ Metronic::getSVG("panel/media/svg/icons/Communication/Write.svg", "svg-icon-md svg-icon-primary") }}
                             </a>
                             <a href="#" class="btn btn-icon btn-light btn-sm">
-                                {{ Metronic::getSVG("media/svg/icons/General/Trash.svg", "svg-icon-md svg-icon-primary") }}
+                                {{ Metronic::getSVG("panel/media/svg/icons/General/Trash.svg", "svg-icon-md svg-icon-primary") }}
                             </a>
                         </td>
                     </tr>
@@ -114,13 +114,13 @@
                         </td>
                         <td class="text-right pr-0">
                             <a href="#" class="btn btn-icon btn-light btn-sm">
-                                {{ Metronic::getSVG("media/svg/icons/General/Settings-1.svg", "svg-icon-md svg-icon-primary") }}
+                                {{ Metronic::getSVG("panel/media/svg/icons/General/Settings-1.svg", "svg-icon-md svg-icon-primary") }}
                             </a>
                             <a href="#" class="btn btn-icon btn-light btn-sm mx-3">
-                                {{ Metronic::getSVG("media/svg/icons/Communication/Write.svg", "svg-icon-md svg-icon-primary") }}
+                                {{ Metronic::getSVG("panel/media/svg/icons/Communication/Write.svg", "svg-icon-md svg-icon-primary") }}
                             </a>
                             <a href="#" class="btn btn-icon btn-light btn-sm">
-                                {{ Metronic::getSVG("media/svg/icons/General/Trash.svg", "svg-icon-md svg-icon-primary") }}
+                                {{ Metronic::getSVG("panel/media/svg/icons/General/Trash.svg", "svg-icon-md svg-icon-primary") }}
                             </a>
                         </td>
                     </tr>
@@ -157,7 +157,7 @@
                         </td>
                         <td class="text-right pr-0">
                             <a href="#" class="btn btn-icon btn-light btn-sm">
-                                {{ Metronic::getSVG("media/svg/icons/General/Settings-1.svg", "svg-icon-md svg-icon-primary") }}
+                                {{ Metronic::getSVG("panel/media/svg/icons/General/Settings-1.svg", "svg-icon-md svg-icon-primary") }}
                             </a>
                             <a href="#" class="btn btn-icon btn-light btn-sm mx-3">
                                 {{ Metronic::getSVG("media/svg/icons/Communication/Write.svg", "svg-icon-md svg-icon-primary") }}

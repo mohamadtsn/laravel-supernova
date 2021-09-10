@@ -6,7 +6,7 @@
         <div class="d-flex align-items-center justify-content-between card-spacer flex-grow-1">
             <span class="symbol symbol-50 symbol-light-primary mr-2">
                 <span class="symbol-label">
-                    {{ Metronic::getSVG("media/svg/icons/Communication/Group.svg", "svg-icon-xl svg-icon-primary") }}
+                    {{ Metronic::getSVG("panel/media/svg/icons/Communication/Group.svg", "svg-icon-xl svg-icon-primary") }}
                 </span>
             </span>
             <div class="d-flex flex-column text-right">

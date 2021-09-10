@@ -110,7 +110,7 @@
 					{{-- Item --}}
 			        <div class="d-flex align-items-center bg-light-warning rounded p-5 mb-5">
 			            <span class="svg-icon svg-icon-warning mr-5">
-			                {{ Metronic::getSVG("media/svg/icons/Home/Library.svg", "svg-icon-lg") }}
+			                {{ Metronic::getSVG("panel/media/svg/icons/Home/Library.svg", "svg-icon-lg") }}
 			            </span>
 
 			            <div class="d-flex flex-column flex-grow-1 mr-2">
@@ -124,7 +124,7 @@
 			        {{-- Item --}}
 			        <div class="d-flex align-items-center bg-light-success rounded p-5 mb-5">
 			            <span class="svg-icon svg-icon-success mr-5">
-			                {{ Metronic::getSVG("media/svg/icons/Communication/Write.svg", "svg-icon-lg") }}
+			                {{ Metronic::getSVG("panel/media/svg/icons/Communication/Write.svg", "svg-icon-lg") }}
 			            </span>
 			            <div class="d-flex flex-column flex-grow-1 mr-2">
 			                <a href="#" class="font-weight-normal text-dark-75 text-hover-primary font-size-lg mb-1">Would be to people</a>
@@ -137,7 +137,7 @@
 			        {{-- Item --}}
 			        <div class="d-flex align-items-center bg-light-danger rounded p-5 mb-5">
 			            <span class="svg-icon svg-icon-danger mr-5">
-			                {{ Metronic::getSVG("media/svg/icons/Communication/Group-chat.svg", "svg-icon-lg") }}
+			                {{ Metronic::getSVG("panel/media/svg/icons/Communication/Group-chat.svg", "svg-icon-lg") }}
 			            </span>
 			            <div class="d-flex flex-column flex-grow-1 mr-2">
 			                <a href="#" class="font-weight-normel text-dark-75 text-hover-primary font-size-lg mb-1">Purpose would be to persuade</a>
@@ -150,7 +150,7 @@
 			        {{-- Item --}}
 			        <div class="d-flex align-items-center bg-light-info rounded p-5">
 			            <span class="svg-icon svg-icon-info mr-5">
-			                {{ Metronic::getSVG("media/svg/icons/General/Attachment2.svg", "svg-icon-lg") }}
+			                {{ Metronic::getSVG("panel/media/svg/icons/General/Attachment2.svg", "svg-icon-lg") }}
 			            </span>
 
 			            <div class="d-flex flex-column flex-grow-1 mr-2">
