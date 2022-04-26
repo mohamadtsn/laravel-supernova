@@ -17,7 +17,9 @@ use App\Http\Controllers\Panel\AuthController;
 use App\Http\Controllers\Panel\ManagerController;
 use App\Http\Controllers\Panel\RoleController;
 
-Route::domain(config('app.management_url'))->middleware('web')->as('panel.')->group(function () {
+Route::group([
+    'as' => 'panel.'
+], function () {
 
     //login & logout
     Route::get('/login', [AuthController::class, 'loginPage'])->name('login_view');

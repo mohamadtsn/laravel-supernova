@@ -137,9 +137,15 @@ public function boot()
 {
     $this->routes(function () {
         // other routes file
-        Route::middleware('web')->namespace($this->namespace)->group(base_path('routes/admin.php')); // #1 add admin panel routes
+        Route::middleware('web')
+                ->namespace($this->namespace)
+                ->domain(config('supernova.management_url'))
+                ->group(base_path('routes/admin.php')); // #1 add admin panel routes (admin.php)
         
-        Route::middleware('web')->namespace($this->namespace)->group(base_path('routes/web.php')); // #2 web.php routes
+        Route::middleware('web')
+                ->namespace($this->namespace)
+                ->domain(config('app.url'))
+                ->group(base_path('routes/web.php')); // #2 web.php routes
     });
 }
 ```
@@ -162,24 +168,24 @@ php artisan migrate --seed              // "Without" Drop All Tables & Migrate a
 ## Usage
 ### Method #1  ====> Setup with virtual host
 - Build a `virtual subdomain` with name `Management`
-  <p style="font-weight: bold;color: #00b300">Example:</p>
-  - origin domain => `shop.test`        // Main URL
-  - subdomain domain => `management.shop.test`     // Admin Panel URL
+  - Example:
+    - origin domain => `example.test`        // Main URL
+    - subdomain domain => `management.example.test`     // Admin Panel URL
 
 - add **param** `Admin Panel URL` to `env` file with name `APP_MANAGEMENT_URL` like below:
   ```env
   APP_URL= http://shop.test
   APP_MANAGEMENT_URL= http://management.shop.test
   ```
-- add **config** `Admin Panel URL` to `config/app.php` file with name `management_url` like below:
+- add **config** `Admin Panel URL` to `config/supernova.php` file with name `management_url` like below:
   ```php
   return [
       // other configs
-      'management_url' => env('APP_MANAGEMENT_URL', 'http://management.shop.test'),
+      'management_url' => env('APP_MANAGEMENT_URL', 'http://management.example.test'),
   ]
   ```
-- Login to Panel `management.shop.test/login`
-- Dashboard Panel `management.shop.test/`
+- Login to Panel `management.example.test/login`
+- Dashboard Panel `management.example.test/`
 
 ### Method #2  ====> Setup without virtual host
 1) publish basic routes:
