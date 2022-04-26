@@ -12,8 +12,8 @@
         }
     ],
     "require": {
-        "php": ">=7.3",
-        "spatie/laravel-permission": "^3.16",
+        "php": "^7.3|^8.0|^8.1",
+        "spatie/laravel-permission": "^5.5.2",
         "yoeunes/toastr": "^1.2"
     },
     "minimum-stability": "dev",

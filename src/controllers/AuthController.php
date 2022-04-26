@@ -12,14 +12,17 @@ class AuthController extends Controller
 {
     public function loginPage()
     {
+        if (Auth::guard('admin')->check()) {
+            return redirect()->route('panel.index');
+        }
         return view('panel.auth.login');
     }
 
     public function login(LoginRequest $request)
     {
-        $user = User::where('email', $request->username)->where('level', '<', '4')->first();
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            return redirect()->back()->withErrors(['email' => "نام کاربری یا رمز عبور صحیح نمیباشد"]);
+        $user = User::where('email', $request->get('username'))->where('level', '<', '4')->first();
+        if (!$user || !Hash::check($request->get('password'), $user->password)) {
+            return redirect()->back()->withErrors(['email' => 'نام کاربری یا رمز عبور صحیح نمیباشد']);
         }
 
         Auth::guard('admin')->loginUsingId($user->id);
