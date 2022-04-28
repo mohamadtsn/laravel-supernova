@@ -49,10 +49,6 @@ return [
             'single' => 'سفارش',
             'many' => 'سفارشات',
         ],
-        'sections' => [
-            'single' => 'بخش',
-            'many' => 'بخش ها',
-        ],
         'videos' => [
             'single' => 'ویدئو',
             'many' => 'ویدئو ها',
@@ -60,10 +56,6 @@ return [
         'photos' => [
             'single' => 'تصویر',
             'many' => 'تصاویر',
-        ],
-        'lessons' => [
-            'single' => 'جلسه',
-            'many' => 'جلسات',
         ],
         'products' => [
             'single' => 'محصول',
@@ -73,7 +65,6 @@ return [
             'single' => 'مقاله',
             'many' => 'مقالات',
         ],
-        'permissions' => 'دسترسی های',
         'files' => [
             'single' => 'فایل',
             'many' => 'فایل ها',
@@ -82,10 +73,6 @@ return [
             'single' => 'مدیر',
             'many' => 'مدیران',
         ],
-        'edit' => 'ویرایش',
-        'update' => 'ویرایش',
-        'status' => 'وضعیت',
-        'create' => 'ایجاد',
         'upload' => [
             'many' => 'آپلود',
             'single' => 'آپلود',
@@ -115,8 +102,14 @@ return [
             'single' => 'درانتظار بررسی',
         ],
         'dashboard' => 'داشبورد',
+
+        'edit' => 'ویرایش',
+        'update' => 'ویرایش',
+        'status' => 'وضعیت',
+        'create' => 'ایجاد',
         'view' => 'نمایش',
         'list' => 'لیست',
+        'permissions' => 'دسترسی های',
     ],
 
     'blocked' => [

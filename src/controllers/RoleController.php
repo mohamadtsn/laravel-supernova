@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Panel;
 
-use App\DB\PermissionRepo;
-use App\DB\RoleRepo;
+use App\Repositories\PermissionRepository;
+use App\Repositories\RoleRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Panel\Role\StoreRequest;
 use App\Http\Requests\Panel\Role\UpdateRequest;
@@ -13,20 +13,19 @@ use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
-
     /**
-     * @var RoleRepo|Application|mixed
+     * @var RoleRepository|Application|mixed
      */
     private $roleRepo;
     /**
-     * @var PermissionRepo|Application|mixed
+     * @var PermissionRepository|Application|mixed
      */
     private $permissionRepo;
 
     public function __construct()
     {
-        $this->roleRepo = resolve(RoleRepo::class);
-        $this->permissionRepo = resolve(PermissionRepo::class);
+        $this->roleRepo = resolve(RoleRepository::class);
+        $this->permissionRepo = resolve(PermissionRepository::class);
     }
 
     public function index(Request $request)
@@ -40,9 +39,9 @@ class RoleController extends Controller
         $roles = $roles->get();
 
         return view('panel.roles.index', [
-            'page_title'        =>  'نقش ها',
-            'page_description'  =>  ' - در این قسمت میتوانید نقش ها را مشاهده کنید',
-            'roles'             =>  $roles
+            'page_title' => 'نقش ها',
+            'page_description' => ' - در این قسمت میتوانید نقش ها را مشاهده کنید',
+            'roles' => $roles,
         ]);
     }
 
@@ -51,10 +50,10 @@ class RoleController extends Controller
         $permissions = $this->permissionRepo->get();
 
         return view('panel.roles.show', [
-            'permissions'   =>  $permissions,
-            'role'          =>  $role,
-            'page_title'        =>  'دسترسی ها',
-            'page_description'  =>  ' - در این قسمت میتوانید دسترسی های یک نقش را مشاهده کنید',
+            'permissions' => $permissions,
+            'role' => $role,
+            'page_title' => 'دسترسی ها',
+            'page_description' => ' - در این قسمت میتوانید دسترسی های یک نقش را مشاهده کنید',
         ]);
     }
 
@@ -80,9 +79,9 @@ class RoleController extends Controller
 
 
         return view('panel.roles.create', [
-            'permissions'   =>  $permissions,
-            'page_title'        =>  'ایجاد نقش',
-            'page_description'  =>  ' - در این قسمت میتوانید نقش جدید اضافه کنید',
+            'permissions' => $permissions,
+            'page_title' => 'ایجاد نقش',
+            'page_description' => ' - در این قسمت میتوانید نقش جدید اضافه کنید',
         ]);
     }
 
@@ -96,8 +95,4 @@ class RoleController extends Controller
 
         return back()->with(['success' => "ایجاد نقش با موفقیت انجام شد"]);
     }
-
-
-
-
 }

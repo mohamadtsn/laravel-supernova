@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\DB;
+namespace App\Repositories;
 
 
 use App\Http\Requests\Panel\User\SetRoleRequest;
@@ -9,7 +9,7 @@ use App\Http\Requests\Panel\User\StoreRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class ManagerRepo
+class ManagerRepository
 {
     /**
      * @return mixed

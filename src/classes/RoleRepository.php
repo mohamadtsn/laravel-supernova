@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\DB;
+namespace App\Repositories;
 
 
 use App\Http\Requests\Panel\Role\StoreRequest;
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
-class RoleRepo
+class RoleRepository
 {
     /**
      * @return Builder

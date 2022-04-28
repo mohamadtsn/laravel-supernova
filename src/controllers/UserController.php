@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Panel;
 
-use App\DB\ManagerRepo;
-use App\DB\PermissionRepo;
-use App\DB\RoleRepo;
+use App\Repositories\ManagerRepository;
+use App\Repositories\PermissionRepository;
+use App\Repositories\RoleRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Panel\User\SetPermissionRequest;
 use App\Http\Requests\Panel\User\SetRoleRequest;
@@ -18,24 +18,24 @@ class UserController extends Controller
     public const DESCRIPTION = ' - در این قسمت میتوانید دسترسی های کاربر را مشاهده کنید';
 
     /**
-     * @var PermissionRepo|Application|mixed
+     * @var PermissionRepository|Application|mixed
      */
     private $permissionRepo;
     /**
-     * @var RoleRepo|Application|mixed
+     * @var RoleRepository|Application|mixed
      */
     private $roleRepo;
     /**
-     * @var ManagerRepo|Application|mixed
+     * @var ManagerRepository|Application|mixed
      */
     private $managerRepo;
 
 
     public function __construct()
     {
-        $this->permissionRepo = resolve(PermissionRepo::class);
-        $this->roleRepo = resolve(RoleRepo::class);
-        $this->managerRepo = resolve(ManagerRepo::class);
+        $this->permissionRepo = resolve(PermissionRepository::class);
+        $this->roleRepo = resolve(RoleRepository::class);
+        $this->managerRepo = resolve(ManagerRepository::class);
     }
 
 
@@ -45,11 +45,11 @@ class UserController extends Controller
         $roles = $this->roleRepo->get()->get();
 
         return view('panel.users.permissions.show', [
-            'user'              =>  $user,
-            'roles'             =>  $roles,
-            'permissions'       =>  $permissions,
-            'page_title'        =>  self::TITLE,
-            'page_description'  =>  self::DESCRIPTION
+            'user' => $user,
+            'roles' => $roles,
+            'permissions' => $permissions,
+            'page_title' => self::TITLE,
+            'page_description' => self::DESCRIPTION,
         ]);
     }
 
