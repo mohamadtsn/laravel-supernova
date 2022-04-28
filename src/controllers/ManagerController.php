@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Panel;
 
-use App\DB\ManagerRepo;
+use App\Repositories\ManagerRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Panel\User\StoreRequest;
 use App\Models\User;
@@ -15,7 +15,7 @@ class ManagerController extends Controller
 
     public function __construct()
     {
-        $this->managerRepo = resolve(ManagerRepo::class);
+        $this->managerRepo = resolve(ManagerRepository::class);
     }
 
     public function index(Request $request)
