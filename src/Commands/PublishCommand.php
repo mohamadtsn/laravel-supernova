@@ -16,10 +16,11 @@ class PublishCommand extends Command
             '--tag' => [
                 'supernova-resources',
                 'supernova-base-resources',
+                'supernova-config',
                 'supernova-migrations',
                 'supernova-virtual-host-routes',
             ],
-            '--force' => ''
+            '--force' => []
         ]);
     }
 }
