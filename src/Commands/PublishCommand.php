@@ -3,7 +3,6 @@
 namespace Mohamadtsn\Supernova\Commands;
 
 use Illuminate\Console\Command;
-use Mohamadtsn\Supernova\Classes\MenuManagerService;
 
 class PublishCommand extends Command
 {

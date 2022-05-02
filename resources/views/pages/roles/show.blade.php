@@ -92,7 +92,6 @@
 
 {{-- Styles Section --}}
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('panel/css/app.css') }}">
     <link href="{{ asset('panel/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css"/>
 @endsection
 
@@ -101,10 +100,4 @@
 @section('scripts')
     {{-- vendors --}}
     <script src="{{ asset('panel/plugins/custom/datatables/datatables.bundle.js') }}" type="text/javascript"></script>
-
-    {{-- page scripts --}}
-    <script src="{{ asset('panel/js/pages/crud/datatables/basic/basic.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('panel/js/app.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('panel/js/custom.script.js') }}" type="text/javascript"></script>
-    @toastr_render
 @endsection
