@@ -13,14 +13,14 @@ class PublishCommand extends Command
     public function handle(): void
     {
         $this->call('vendor:publish', [
+            '--force' => true,
             '--tag' => [
                 'supernova-resources',
                 'supernova-base-resources',
                 'supernova-config',
                 'supernova-migrations',
                 'supernova-virtual-host-routes',
-            ],
-            '--force' => []
+            ]
         ]);
     }
 }
