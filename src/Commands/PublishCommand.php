@@ -20,11 +20,7 @@ class PublishCommand extends Command
                 'supernova-migrations',
                 'supernova-virtual-host-routes',
             ],
+            '--force' => ''
         ]);
-        if (app(MenuManagerService::class)->forgetCachedMenus()) {
-            $this->info('Menu cache flushed.');
-        } else {
-            $this->error('Unable to flush cache.');
-        }
     }
 }
