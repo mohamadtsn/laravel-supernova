@@ -40,5 +40,8 @@
 @include('admin-panel.structure.widgets._widget-9', ['class' => 'card-stretch gutter-b'])
 
 
+@endsection
 
+@section('scripts')
+    <script src="{{ asset('panel/js/widgets.js') }}" type="text/javascript"></script>
 @endsection

@@ -3,7 +3,6 @@
 namespace Mohamadtsn\Supernova\Commands;
 
 use Illuminate\Console\Command;
-use Mohamadtsn\Supernova\Classes\MenuManagerService;
 
 class PublishCommand extends Command
 {
@@ -20,11 +19,7 @@ class PublishCommand extends Command
                 'supernova-migrations',
                 'supernova-virtual-host-routes',
             ],
+            '--force' => ''
         ]);
-        if (app(MenuManagerService::class)->forgetCachedMenus()) {
-            $this->info('Menu cache flushed.');
-        } else {
-            $this->error('Unable to flush cache.');
-        }
     }
 }
