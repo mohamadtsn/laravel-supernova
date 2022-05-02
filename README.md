@@ -35,10 +35,11 @@ Change locale to `fa` in `config/app.php`
 ```
 
 Add this to your `Aliases` in `config/app.php`
+
 ```php
 'aliases' => [
     // other aliases
-    'Metronic' => App\Classes\Theme\Metronic::class,
+    'Supernova' => App\Classes\Theme\Supernova::class,
     'Menu' => App\Classes\Theme\Menu::class,
 ],
 ```
