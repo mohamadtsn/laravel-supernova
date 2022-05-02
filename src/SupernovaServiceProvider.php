@@ -81,11 +81,11 @@ class SupernovaServiceProvider extends ServiceProvider
     private function publishRoutes(): void
     {
         $this->publishes([
-            __DIR__ . '/administrator_without_virtual_host.php' => base_path('routes/admin.php'),
+            __DIR__ . '/../routes/administrator_without_virtual_host.php' => base_path('routes/admin.php'),
         ], 'supernova-basic-routes');
 
         $this->publishes([
-            __DIR__ . '/administrator_with_virtual_host.php' => base_path('routes/admin.php'),
+            __DIR__ . '/../routes/administrator_with_virtual_host.php' => base_path('routes/admin.php'),
         ], 'supernova-virtual-host-routes');
     }
 
@@ -121,7 +121,7 @@ class SupernovaServiceProvider extends ServiceProvider
     private function publishResources(): void
     {
         $this->publishes([
-            __DIR__ . '/../resources/views' => base_path('resources/views/'),
+            __DIR__ . '/../resources/views' => base_path('resources/views/admin-panel/'),
             __DIR__ . '/../resources/assets' => base_path('public/panel/'),
         ], 'supernova-resources');
     }
@@ -132,10 +132,9 @@ class SupernovaServiceProvider extends ServiceProvider
             __DIR__ . '/Http/Controllers' => base_path('app/Http/Controllers/Panel/'),
             __DIR__ . '/Http/Middleware' => base_path('app/Http/Middleware/'),
             __DIR__ . '/Http/Requests' => base_path('app/Http/Requests/Panel/'),
-            __DIR__ . '../lang' => base_path('lang/fa'),
+            __DIR__ . '/../lang' => base_path('lang/fa'),
             __DIR__ . '/Models/User.php' => base_path('app/Models/'),
             __DIR__ . '/Repositories' => base_path('app/Repositories/'),
-            __DIR__ . '../routes/administrator_with_virtual_host.php' => base_path('routes/admin.php'),
         ], 'supernova-base-resources');
     }
 }
