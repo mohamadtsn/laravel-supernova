@@ -2,7 +2,7 @@
 
 namespace Mohamadtsn\Supernova\Classes\Traits;
 
-use App\Supernova\Theme\MenuManagerService;
+use Mohamadtsn\Supernova\Classes\MenuManagerService;
 
 trait MenuGenerator
 {

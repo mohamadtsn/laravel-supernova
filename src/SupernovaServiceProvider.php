@@ -19,7 +19,7 @@ class SupernovaServiceProvider extends ServiceProvider
     {
         $this->registerConfigs();
         $this->registerCommands();
-        $this->registerTemplateClasses();
+        $this->registerFacades();
 
         $this->booted(function () {
             Init::run();
@@ -136,7 +136,7 @@ class SupernovaServiceProvider extends ServiceProvider
         ], 'supernova-base-resources');
     }
 
-    private function registerTemplateClasses(): void
+    private function registerFacades(): void
     {
         $this->app->singleton('supernova', Supernova::class);
         $this->app->singleton('menu', Menu::class);
