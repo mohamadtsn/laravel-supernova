@@ -13,7 +13,7 @@ class MenuCacheResetCommand extends Command
 
     public function handle(): void
     {
-        if (app(MenuManagerService::class)->forgetCachedMenus()) {
+        if (app(MenuManagerService::class)->forgetCachedMenusForUsers($this->laravel['auth']->guard('admin')->user())) {
             $this->info('Menu cache flushed.');
         } else {
             $this->error('Unable to flush cache.');

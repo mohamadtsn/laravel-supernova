@@ -8,7 +8,7 @@ trait MenuGenerator
 {
     public static function loadVerticalMenu(): mixed
     {
-        return app(MenuManagerService::class)->getVerticalMenu();
+        return \Blade::render(app(MenuManagerService::class)->getVerticalMenu());
     }
 
     private static function checkStatusItemsAfterSection(int $key_item): bool

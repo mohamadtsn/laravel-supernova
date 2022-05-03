@@ -8,6 +8,7 @@ use Mohamadtsn\Supernova\Classes\Traits\MenuGenerator;
 class Menu
 {
     use MenuGenerator;
+
     /**
      * Aside menu
      * @param $item
@@ -16,6 +17,7 @@ class Menu
      * @param int $rec
      * @param bool $singleItem
      * @return string|void
+     * @throws \JsonException
      */
     public static function renderVerMenu($item, int $key_item = 0, $parent = null, int $rec = 0, bool $singleItem = false)
     {
@@ -73,11 +75,10 @@ class Menu
                 $item_class .= ' ' . $item['custom-class'];
             }
 
-            if (isset($item['submenu']) && self::isActiveVerMenuItem($item, request()->path())) {
-                $item_class .= ' menu-item-open menu-item-here'; // m-menu__item--active
-            } else if (self::isActiveVerMenuItem($item, request()->path())) {
-                $item_class .= ' menu-item-active';
-            }
+
+            // set `Dynamical` check active vertical menu item
+            $item_json = json_encode($item, JSON_THROW_ON_ERROR);
+            $item_class .= "@if(isset(json_decode('$item_json', true)['submenu']) && \Menu::isActiveVerMenuItem(json_decode('$item_json', true), request()->path())) menu-item-open menu-item-here @elseif(\Menu::isActiveVerMenuItem(json_decode('$item_json', true), request()->path())) menu-item-active @endif";
 
             echo '<li class="menu-item ' . $item_class . '" aria-haspopup="true" ' . $item_attr . '>';
             if (isset($item['parent'])) {
@@ -94,7 +95,7 @@ class Menu
                 }
 
                 $target = '';
-                if (isset($item['new-tab']) && $item['new-tab'] == true) {
+                if (isset($item['new-tab']) && (bool)$item['new-tab'] === true) {
                     $target = 'target="_blank"';
                 }
 
@@ -112,7 +113,7 @@ class Menu
                 echo '<i class="menu-bullet menu-bullet-dot"><span></span></i>';
             } else if ($parent && isset($parent['bullet']) && $parent['bullet'] === 'line') {
                 echo '<i class="menu-bullet menu-bullet-line"><span></span></i>';
-            } else if ( isset($item['icon']) && !empty($item['icon']) && config('supernova.layout.aside.menu.hide-root-icons') !== true) {
+            } else if (isset($item['icon']) && !empty($item['icon']) && config('supernova.layout.aside.menu.hide-root-icons') !== true) {
                 self::renderIcon($item['icon']);
             }
 
@@ -172,7 +173,7 @@ class Menu
                     $parent_item = $item;
                     $parent_item['parent'] = true;
                     unset($parent_item['icon'], $parent_item['submenu']);
-                    self::renderVerMenu($parent_item, $key_item,null, $rec++, true); // single item render
+                    self::renderVerMenu($parent_item, $key_item, null, $rec++, true); // single item render
                 }
                 foreach ($item['submenu'] as $submenu_item) {
                     self::renderVerMenu($submenu_item, $key_item, $item, $rec++);
@@ -443,7 +444,7 @@ class Menu
      * @param int $rec
      * @return bool
      */
-    public static function isActiveVerMenuItem($item, $page, $rec = 0): bool
+    public static function isActiveVerMenuItem($item, $page, int $rec = 0): bool
     {
         if (isset($item['redirect']) && $item['redirect'] === true) {
             return false;
@@ -452,15 +453,14 @@ class Menu
         self::checkRecursion($rec);
 
         if (isset($item['page'])) {
-            if (is_array($item['page'])) {
-                $page = rtrim(ltrim(self::cleanupNumbers($page), '/'), '/');
-                return in_array($page, array_map(static function ($item) {
-                    return self::cleanupNumbers(rtrim(ltrim($item, '/'), '/'));
-                }, $item['page']), true);
-            }
-            if (rtrim(ltrim(self::cleanupNumbers($item['page']), '/'), '/') === $page) {
-                return true;
-            }
+            $page = self::SlashClearUrlPage($page);
+            $page_item = (
+            !is_array($item['page']) ?
+                self::SlashClearUrlPage($item['page']) :
+                array_map(static fn($map_item) => self::SlashClearUrlPage($map_item), $item['page'])
+            );
+
+            return (is_array($page_item) && in_array($page, $page_item, true)) || $page_item === $page;
         }
 
         if (is_array($item)) {
@@ -479,28 +479,10 @@ class Menu
      * @param string $string
      * @return string
      */
-    public static function cleanupNumbers(string $string): string
+    public static function cleanupModelBindingUrl(string $string): string
     {
         $numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ' '];
-        return Str::replace('//', '/', Str::replace($numbers, '', $string));
-    }
-
-    /**
-     * @param string $string
-     * @return string
-     */
-    public static function cleanupSlashEnd(string $string): string
-    {
-        return (Str::endsWith(self::cleanupNumbers($string), '/')) ? Str::replaceLast('/', '', $string) : $string;
-    }
-
-    /**
-     * @param string $string
-     * @return string
-     */
-    public static function cleanupSlashStart(string $string): string
-    {
-        return (Str::startsWith($string, '/')) ? Str::replaceFirst('/', '', $string) : $string;
+        return Str::replace(['//', '/{*}/'], '/', Str::replace($numbers, '', $string));
     }
 
     /**
@@ -563,4 +545,14 @@ class Menu
 
     }
 
+    /**
+     * Clean Up slash`s from page url
+     * @param $page
+     * @return string
+     */
+    private static function SlashClearUrlPage($page): string
+    {
+        $page !== '/' && $page = trim(self::cleanupModelBindingUrl($page), '/');
+        return $page;
+    }
 }
