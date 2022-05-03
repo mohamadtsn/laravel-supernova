@@ -35,13 +35,15 @@ Route::prefix('panel')->middleware('web')->as('panel.')->group(function () {
         //managers
         Route::resource('managers', ManagerController::class)->except(['edit', 'update', 'show']);
 
-        Route::controller(UserController::class)->group(['as' => 'users.', 'prefix' => 'users'], function () {
+        Route::group(['as' => 'users.', 'prefix' => 'users'], static function () {
             // user-permissions
-            Route::get('{user}/permissions', 'permissions')->name('permissions');
-            Route::post('{user}/permissions', 'setPermissions')->name('store.permissions');
+            Route::controller(UserController::class)->group(function () {
+                Route::get('{user}/permissions', 'permissions')->name('permissions');
+                Route::post('{user}/permissions', 'setPermissions')->name('store.permissions');
 
-            // user-roles
-            Route::post('{user}/roles', 'setRoles')->name('store.roles');
+                // user-roles
+                Route::post('{user}/roles', 'setRoles')->name('store.roles');
+            });
         });
 
         //roles

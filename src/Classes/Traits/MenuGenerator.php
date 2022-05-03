@@ -2,13 +2,13 @@
 
 namespace Mohamadtsn\Supernova\Classes\Traits;
 
-use App\Supernova\Theme\MenuManagerService;
+use Mohamadtsn\Supernova\Classes\MenuManagerService;
 
 trait MenuGenerator
 {
     public static function loadVerticalMenu(): mixed
     {
-        return app(MenuManagerService::class)->getVerticalMenu();
+        return \Blade::render(app(MenuManagerService::class)->getVerticalMenu());
     }
 
     private static function checkStatusItemsAfterSection(int $key_item): bool

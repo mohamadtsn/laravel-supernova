@@ -60,7 +60,7 @@
                 {{-- Symbol --}}
                 <div class="symbol symbol-45 symbol-light mr-5">
                     <span class="symbol-label">
-                        <img src="{{ asset('media/svg/misc/006-plurk.svg') }}" class="h-50 align-self-center" />
+                        <img src="{{ asset('panel/media/svg/misc/006-plurk.svg') }}" class="h-50 align-self-center" />
                     </span>
                 </div>
 
@@ -85,7 +85,7 @@
                 {{-- Symbol --}}
                 <div class="symbol symbol-45 symbol-light mr-5">
                     <span class="symbol-label">
-                        <img src="{{ asset('media/svg/misc/015-telegram.svg') }}" class="h-50 align-self-center" />
+                        <img src="{{ asset('panel/media/svg/misc/015-telegram.svg') }}" class="h-50 align-self-center" />
                     </span>
                 </div>
 
@@ -110,7 +110,7 @@
                 {{-- Symbol --}}
                 <div class="symbol symbol-45 symbol-light mr-5">
                     <span class="symbol-label">
-                        <img src="{{ asset('media/svg/misc/014-kickstarter.svg') }}" class="h-50 align-self-center" />
+                        <img src="{{ asset('panel/media/svg/misc/014-kickstarter.svg') }}" class="h-50 align-self-center" />
                     </span>
                 </div>
 

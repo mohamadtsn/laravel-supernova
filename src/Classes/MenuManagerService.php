@@ -95,7 +95,7 @@ class MenuManagerService
     public function generateVerticalMenu(): string
     {
         ob_start();
-        Menu::renderVerMenu($this->menuItems);
+        \Menu::renderVerMenu($this->menuItems);
         $menu = ob_get_clean();
         if (!$menu) {
             throw new \RuntimeException('Unavailable buffer.');

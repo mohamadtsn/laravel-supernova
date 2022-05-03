@@ -58,7 +58,7 @@
             {{-- Symbol --}}
             <div class="symbol symbol-40 symbol-light-success mr-5">
                 <span class="symbol-label">
-                    <img src="{{ asset('media/svg/avatars/009-boy-4.svg') }}" class="h-75 align-self-end"/>
+                    <img src="{{ asset('panel/media/svg/avatars/009-boy-4.svg') }}" class="h-75 align-self-end"/>
                 </span>
             </div>
 
@@ -123,7 +123,7 @@
             {{-- Symbol --}}
             <div class="symbol symbol-40 symbol-light-success mr-5">
                 <span class="symbol-label">
-                    <img src="{{ asset('media/svg/avatars/006-girl-3.svg') }}" class="h-75 align-self-end"/>
+                    <img src="{{ asset('panel/media/svg/avatars/006-girl-3.svg') }}" class="h-75 align-self-end"/>
                 </span>
             </div>
 
@@ -188,7 +188,7 @@
             {{-- Symbol --}}
             <div class="symbol symbol-40 symbol-light-success mr-5">
                 <span class="symbol-label">
-                    <img src="{{ asset('media/svg/avatars/011-boy-5.svg') }}" class="h-75 align-self-end"/>
+                    <img src="{{ asset('panel/media/svg/avatars/011-boy-5.svg') }}" class="h-75 align-self-end"/>
                 </span>
             </div>
 
@@ -253,7 +253,7 @@
             {{-- Symbol --}}
             <div class="symbol symbol-40 symbol-light-success mr-5">
                 <span class="symbol-label">
-                    <img src="{{ asset('media/svg/avatars/015-boy-6.svg') }}" class="h-75 align-self-end"/>
+                    <img src="{{ asset('panel/media/svg/avatars/015-boy-6.svg') }}" class="h-75 align-self-end"/>
                 </span>
             </div>
 
@@ -318,7 +318,7 @@
             {{-- Symbol --}}
             <div class="symbol symbol-40 symbol-light-success mr-5">
                 <span class="symbol-label">
-                    <img src="{{ asset('media/svg/avatars/016-boy-7.svg') }}" class="h-75 align-self-end"/>
+                    <img src="{{ asset('panel/media/svg/avatars/016-boy-7.svg') }}" class="h-75 align-self-end"/>
                 </span>
             </div>
 
