@@ -1,4 +1,4 @@
-@if(config('supernova.layout.self.layout') == 'blank')
+@if(config('supernova.layout.self.layout') === 'blank')
     <div class="d-flex flex-column flex-root">
         @yield('content')
     </div>

@@ -7,7 +7,7 @@
         <div class="text-dark order-2 order-md-1">
             <span class="text-muted font-weight-bold mr-2">&copy;&nbsp;{{ date("Y") }}</span>
             <span>
-                توسعه داده شده توسط <a href="https://github.com/mohamadtsn/" target="_blank" class="text-dark-75 text-hover-primary">mohamadtsn@</a> با <i class="fa fa-heart text-danger"></i>
+                توسعه داده شده توسط <a href="https://github.com/mohamadtsn/" target="_blank" class="text-dark-75 text-hover-primary">mohamadtsn@</a> با <i title="Love" data-theme="dark" data-toggle="tooltip" class="fa fa-heart text-danger"></i>
             </span>
         </div>
 

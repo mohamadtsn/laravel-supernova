@@ -1,11 +1,10 @@
 {{-- Content --}}
-@if (config('supernova.layout.content.extended'))
-@yield('content')
+@if (config('layout.content.extended'))
+    @yield('content')
 @else
-
-{{ Supernova::printClasses('content-container', false) }}
-@include('admin-panel.structure.layout.partials.extras.errors')
-@yield('content')
-
-
+    <div class="d-flex flex-column-fluid">
+        <div class="{{ Supernova::printClasses('content-container', false) }}">
+            @yield('content')
+        </div>
+    </div>
 @endif

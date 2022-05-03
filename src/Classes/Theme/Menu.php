@@ -106,21 +106,13 @@ class Menu
                 echo '<span class="menu-item-here"></span>';
             }
 
-            // bullet
-            $bullet = '';
-
-            if ($parent != null && isset($parent['bullet']) && $parent['bullet'] == 'dot') {
-                $bullet = 'dot';
-            } else if ($parent != null && isset($parent['bullet']) && $parent['bullet'] == 'line') {
-                $bullet = 'line';
-            }
 
             // Menu icon OR bullet
-            if ($bullet == 'dot') {
+            if ($parent && isset($parent['bullet']) && $parent['bullet'] === 'dot') {
                 echo '<i class="menu-bullet menu-bullet-dot"><span></span></i>';
-            } else if ($bullet == 'line') {
+            } else if ($parent && isset($parent['bullet']) && $parent['bullet'] === 'line') {
                 echo '<i class="menu-bullet menu-bullet-line"><span></span></i>';
-            } else if (config('supernova.layout.aside.menu.hide-root-icons') !== true && isset($item['icon']) && !empty($item['icon'])) {
+            } else if ( isset($item['icon']) && !empty($item['icon']) && config('supernova.layout.aside.menu.hide-root-icons') !== true) {
                 self::renderIcon($item['icon']);
             }
 
@@ -130,7 +122,7 @@ class Menu
                 echo '<span class="menu-badge"><span class="label ' . $item['label']['type'] . '">' . $item['label']['value'] . '</span></span>';
             }
 
-            if ($singleItem == true) {
+            if ($singleItem === true) {
                 if (isset($item['parent'])) {
                     echo '</span>';
                 } else {
@@ -142,16 +134,14 @@ class Menu
             }
 
             if (isset($item['submenu'])) {
-                if (isset($item['root']) == false && config('supernova.layout.menu.aside.submenu.arrow') == 'plus-minus') {
+                if (!isset($item['root']) && config('supernova.layout.menu.aside.submenu.arrow') == 'plus-minus') {
                     echo '<i class="menu-arrow menu-arrow-pm"><span><span></span></span></i>';
-                } else if (isset($item['root']) == false && config('supernova.layout.menu.aside.submenu.arrow') == 'plus-minus-square') {
+                } else if (!isset($item['root']) && config('supernova.layout.menu.aside.submenu.arrow') == 'plus-minus-square') {
                     echo '<i class="menu-arrow menu-arrow-pm-square"><span><span></span></span></i>';
-                } else if (isset($item['root']) == false && config('supernova.layout.menu.aside.submenu.arrow') == 'plus-minus-circle') {
+                } else if (!isset($item['root']) && config('supernova.layout.menu.aside.submenu.arrow') == 'plus-minus-circle') {
                     echo '<i class="menu-arrow menu-arrow-pm-circle"><span><span></span></span></i>';
-                } else {
-                    if (@$item['arrow'] !== false && config('supernova.layout.aside.menu.root-arrow') !== false) {
-                        echo '<i class="menu-arrow"></i>';
-                    }
+                } else if (@$item['arrow'] !== false && config('supernova.layout.aside.menu.root-arrow') !== false) {
+                    echo '<i class="menu-arrow"></i>';
                 }
             }
 
@@ -181,8 +171,7 @@ class Menu
                 if (isset($item['root'])) {
                     $parent_item = $item;
                     $parent_item['parent'] = true;
-                    unset($parent_item['icon']);
-                    unset($parent_item['submenu']);
+                    unset($parent_item['icon'], $parent_item['submenu']);
                     self::renderVerMenu($parent_item, $key_item,null, $rec++, true); // single item render
                 }
                 foreach ($item['submenu'] as $submenu_item) {
