@@ -19,9 +19,7 @@ class SupernovaServiceProvider extends ServiceProvider
     {
         $this->registerConfigs();
         $this->registerCommands();
-
-        $this->app->alias('supernova', Supernova::class);
-        $this->app->alias('menu', Menu::class);
+        $this->registerTemplateClasses();
 
         $this->booted(function () {
             Init::run();
@@ -37,7 +35,7 @@ class SupernovaServiceProvider extends ServiceProvider
         });
     }
 
-    protected function offerPublishing()
+    protected function offerPublishing(): void
     {
         if (!function_exists('config_path')) {
             // function not available and 'publish' not relevant in `Lumen`
@@ -136,5 +134,11 @@ class SupernovaServiceProvider extends ServiceProvider
             __DIR__ . '/Models/User.php' => base_path('app/Models/'),
             __DIR__ . '/Repositories' => base_path('app/Repositories/'),
         ], 'supernova-base-resources');
+    }
+
+    private function registerTemplateClasses(): void
+    {
+        $this->app->singleton('supernova', Supernova::class);
+        $this->app->singleton('menu', Menu::class);
     }
 }
