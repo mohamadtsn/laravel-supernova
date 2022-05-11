@@ -58,7 +58,6 @@ class SupernovaServiceProvider extends ServiceProvider
         $this->commands([
             PublishCommand::class,
             PermissionSyncCommand::class,
-            MenuCacheResetCommand::class,
         ]);
     }
 
