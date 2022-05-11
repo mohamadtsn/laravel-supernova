@@ -131,7 +131,6 @@ class SupernovaServiceProvider extends ServiceProvider
             __DIR__ . '/Http/Middleware' => base_path('app/Http/Middleware/'),
             __DIR__ . '/Http/Requests' => base_path('app/Http/Requests/Panel/'),
             __DIR__ . '/../lang' => base_path('lang/fa'),
-            __DIR__ . '/Models/User.php' => base_path('app/Models/'),
             __DIR__ . '/Repositories' => base_path('app/Repositories/'),
         ], 'supernova-base-resources');
     }
