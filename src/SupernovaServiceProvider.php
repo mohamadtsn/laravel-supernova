@@ -9,7 +9,6 @@ use Mohamadtsn\Supernova\Classes\MenuManagerService;
 use Mohamadtsn\Supernova\Classes\Theme\Init;
 use Mohamadtsn\Supernova\Classes\Theme\Menu;
 use Mohamadtsn\Supernova\Classes\Theme\Supernova;
-use Mohamadtsn\Supernova\Commands\MenuCacheResetCommand;
 use Mohamadtsn\Supernova\Commands\PermissionSyncCommand;
 use Mohamadtsn\Supernova\Commands\PublishCommand;
 
@@ -20,6 +19,7 @@ class SupernovaServiceProvider extends ServiceProvider
         $this->registerConfigs();
         $this->registerCommands();
         $this->registerFacades();
+        $this->registerViews();
 
         $this->booted(function () {
             Init::run();
@@ -121,6 +121,7 @@ class SupernovaServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../resources/views' => base_path('resources/views/admin-panel/'),
             __DIR__ . '/../resources/assets' => base_path('public/panel/'),
+            __DIR__ . '/../resources/admin-panel' => base_path('resources/js/admin-panel/'),
         ], 'supernova-resources');
     }
 
@@ -140,5 +141,10 @@ class SupernovaServiceProvider extends ServiceProvider
     {
         $this->app->singleton('supernova', Supernova::class);
         $this->app->singleton('menu', Menu::class);
+    }
+
+    private function registerViews(): void
+    {
+        $this->loadViewsFrom(__DIR__ . '/../resources/vendor', 'supernova');
     }
 }

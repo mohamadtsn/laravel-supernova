@@ -11,12 +11,13 @@ use Mohamadtsn\Supernova\Models\Permission;
 
 class PermissionSyncCommand extends Command
 {
-    protected $signature = 'supernova:permissions-sync';
+    protected $signature = 'supernova:permissions-sync {--F|force : sync current permissions and remove ones that do not exist.}';
 
     protected $description = 'sync permissions with routes list';
 
     public function handle(): void
     {
+        $permissions = [];
         foreach ($this->getRoutes() as $route) {
             $ignore = false;
             $array = explode('/', $route->url);
@@ -74,12 +75,22 @@ class PermissionSyncCommand extends Command
                 }
             }
 
-            Permission::upsert([
+            $permissions[] = [
                 'name' => "$route->method-/$route->url",
-                'guard_name' => 'web',
+                'guard_name' => config('supernova.default_guard'),
                 'display_name' => $displayName ?? null,
-            ], 'name');
+            ];
         }
+
+        if ($this->option('force')) {
+            Permission::query()->delete();
+            collect($permissions)->each(function ($item) {
+                Permission::create($item);
+            });
+        } else {
+            Permission::upsert($permissions, 'name');
+        }
+
 
         Artisan::call('permission:cache-reset');
         $this->comment('All permissions are synced by routes');
@@ -118,7 +129,7 @@ class PermissionSyncCommand extends Command
      * @param bool $pure
      * @return array|false|mixed|string|null
      */
-    private function displayName(string $word, $type = null, bool $pure = false)
+    private function displayName(string $word, $type = null, bool $pure = false): mixed
     {
         $path_word = "routes.accepted.$word";
         $get_word = Lang::get($path_word);
@@ -152,6 +163,11 @@ class PermissionSyncCommand extends Command
         return $routes;
     }
 
+    /**
+     * @param $str
+     * @param array $arr
+     * @return bool
+     */
     private function contains($str, array $arr): bool
     {
         foreach ($arr as $a) {
@@ -162,12 +178,20 @@ class PermissionSyncCommand extends Command
         return false;
     }
 
+    /**
+     * @param $word
+     * @return string
+     */
     private function convertToManyWord($word): string
     {
         return Str::plural($word);
     }
 
-    private function cleanString(string $word)
+    /**
+     * @param string $word
+     * @return array|string|null
+     */
+    private function cleanString(string $word): array|string|null
     {
         return preg_replace('/[^A-Za-z\d\-\_]/', '', $word);
     }

@@ -10,26 +10,23 @@ use App\Http\Requests\Panel\User\SetPermissionRequest;
 use App\Http\Requests\Panel\User\SetRoleRequest;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 class UserController extends Controller
 {
-
-    public const TITLE = 'دسترسی کاربر';
-    public const DESCRIPTION = ' - در این قسمت میتوانید دسترسی های کاربر را مشاهده کنید';
-
     /**
      * @var PermissionRepository|Application|mixed
      */
-    private $permissionRepo;
+    private mixed $permissionRepo;
     /**
      * @var RoleRepository|Application|mixed
      */
-    private $roleRepo;
+    private mixed $roleRepo;
     /**
      * @var ManagerRepository|Application|mixed
      */
-    private $managerRepo;
-
+    private mixed $managerRepo;
 
     public function __construct()
     {
@@ -38,29 +35,28 @@ class UserController extends Controller
         $this->managerRepo = resolve(ManagerRepository::class);
     }
 
-
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function permissions(User $user)
     {
         $permissions = $this->permissionRepo->get();
         $roles = $this->roleRepo->get()->get();
-
         return view('admin-panel.pages.users.permissions.show', [
             'user' => $user,
             'roles' => $roles,
             'permissions' => $permissions,
-            'page_title' => self::TITLE,
-            'page_description' => self::DESCRIPTION,
+            'page_title' => 'دسترسی کاربر',
+            'page_description' => ' - در این قسمت میتوانید دسترسی های کاربر را مشاهده کنید.',
         ]);
     }
 
     public function setRoles(SetRoleRequest $request, User $user)
     {
-        if ($request->role) {
-            $this->managerRepo->getSyncRoles($user, $request);
-        }
+        $this->managerRepo->getSyncRoles($user, $request);
 
-        toastr()->success('ثبت نقش با موفقیت انجام شد.');
-
+        toastr()->success('اعطای نقش با موفقیت انجام شد.');
         return back();
     }
 
@@ -74,6 +70,4 @@ class UserController extends Controller
         return back();
 
     }
-
-
 }

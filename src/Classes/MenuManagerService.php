@@ -8,6 +8,7 @@ use Illuminate\Cache\CacheManager;
 use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Contracts\Cache\Store;
 use Illuminate\Support\Arr;
+use Mohamadtsn\Supernova\Models\Role;
 
 class MenuManagerService
 {
@@ -111,6 +112,16 @@ class MenuManagerService
     public function forgetCachedMenusForUsers(User $user): bool
     {
         return $this->getCacheRepository()->forget($this->getCacheKey($user->getKey()));
+    }
+
+    public function forgetCachedMenusForUsersByRole(Role $role): void
+    {
+        $users_role = $role->users;
+        if (!$users_role->isEmpty()) {
+            $users_role->map(function ($item) {
+                return $this->getCacheRepository()->forget($this->getCacheKey($item->getKey()));
+            });
+        }
     }
 
     public function getCacheRepository(): Repository

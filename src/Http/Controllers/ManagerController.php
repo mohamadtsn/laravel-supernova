@@ -54,8 +54,4 @@ class ManagerController extends Controller
         toastr()->success('مدیریت با موفقیت حذف شد');
         return back();
     }
-
-
-
-
 }

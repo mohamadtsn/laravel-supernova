@@ -47,3 +47,4 @@
 @section('scripts')
     <script src="{{ asset('panel/js/widgets.js') }}" type="text/javascript"></script>
 @endsection
+

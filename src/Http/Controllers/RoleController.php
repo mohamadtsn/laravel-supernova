@@ -5,22 +5,26 @@ namespace App\Http\Controllers\Panel;
 use App\Repositories\PermissionRepository;
 use App\Repositories\RoleRepository;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Panel\Role\StoreRequest;
-use App\Http\Requests\Panel\Role\UpdateRequest;
+use App\Http\Requests\Panel\Role\{StoreRequest, UpdateRequest};
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
+use Mohamadtsn\Supernova\Models\Role;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 class RoleController extends Controller
 {
     /**
      * @var RoleRepository|Application|mixed
      */
-    private $roleRepo;
+    private mixed $roleRepo;
     /**
      * @var PermissionRepository|Application|mixed
      */
-    private $permissionRepo;
+    private mixed $permissionRepo;
 
     public function __construct()
     {
@@ -28,6 +32,12 @@ class RoleController extends Controller
         $this->permissionRepo = resolve(PermissionRepository::class);
     }
 
+    /**
+     * @param Request $request
+     * @return Application|Factory|View
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function index(Request $request)
     {
         $roles = $this->roleRepo->get();
@@ -45,6 +55,10 @@ class RoleController extends Controller
         ]);
     }
 
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function show(Role $role)
     {
         $permissions = $this->permissionRepo->get();
@@ -57,9 +71,14 @@ class RoleController extends Controller
         ]);
     }
 
-    public function update(Role $role, UpdateRequest $request)
+    /**
+     * @param Role $role
+     * @param UpdateRequest $request
+     * @return RedirectResponse
+     */
+    public function update(Role $role, UpdateRequest $request): RedirectResponse
     {
-        if ((string)$role->name !== (string)$request->title) {
+        if ($role->name !== $request->get('title')) {
             $this->roleRepo->getValidate($request);
         }
 
@@ -68,15 +87,17 @@ class RoleController extends Controller
         $this->roleRepo->getUpdate($role, $request);
         $this->roleRepo->getSyncPermissions($role, $permissions);
 
-        toastr()->info('عملیات با موفقیت انجام شد');
-
+        alert()->success('عملیات موفق', 'عملیات با موفقیت انجام شد.');
         return back();
     }
 
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function create()
     {
         $permissions = $this->permissionRepo->get();
-
 
         return view('admin-panel.pages.roles.create', [
             'permissions' => $permissions,
@@ -85,14 +106,19 @@ class RoleController extends Controller
         ]);
     }
 
-    public function store(StoreRequest $request)
+    /**
+     * @param StoreRequest $request
+     * @return RedirectResponse
+     */
+    public function store(StoreRequest $request): RedirectResponse
     {
         $permissions = $request->input('permissions');
-
         $role = $this->roleRepo->create($request);
 
         $this->roleRepo->syncPermissions($role, $permissions);
 
-        return back()->with(['success' => "ایجاد نقش با موفقیت انجام شد"]);
+        toastr()->info('ایجاد نقش با موفقیت انجام شد.');
+
+        return back();
     }
 }

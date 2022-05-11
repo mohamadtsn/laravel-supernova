@@ -1,7 +1,12 @@
 <?php
 return [
     'static_title_page' => 'پنل مدیریت',
+
     'management_url' => env('APP_MANAGEMENT_URL', 'http://management.example.test'),
+
+    'default_guard' => 'admin',
+
+    'recaptcha_login' => false,
 
     /*
      * `Aside menu` Panel Setting and menu items
@@ -27,7 +32,8 @@ return [
                 'bullet' => 'line',
                 'page' => [
                     '/managers',
-                    '/managers/create'
+                    '/managers/create',
+                    '/managers/{*}/permissions',
                 ]
             ],
             [
@@ -36,6 +42,7 @@ return [
                 'bullet' => 'dot',
                 'page' => [
                     '/roles',
+                    '/roles/{*}',
                     '/roles/create'
                 ]
             ],
@@ -269,7 +276,7 @@ return [
             ],
             [
                 'title' => 'Pages',
-                'icon' => 'media/svg/icons/Shopping/Barcode-read.svg',
+                'icon' => 'panel/media/svg/icons/Shopping/Barcode-read.svg',
                 'bullet' => 'dot',
                 'root' => true,
                 'submenu' => [
@@ -708,11 +715,14 @@ return [
                 'panel/plugins/global/plugins.bundle.css',
                 'panel/plugins/custom/prismjs/prismjs.bundle.css',
                 'panel/css/style.bundle.css',
+                'panel/plugins/custom/datatables/datatables.bundle.css',
             ],
             'js' => [
                 'panel/plugins/global/plugins.bundle.js',
                 'panel/plugins/custom/prismjs/prismjs.bundle.js',
-                'panel/js/scripts.bundle.js',
+                'panel/js/app.js',
+                'panel/plugins/custom/datatables/datatables.bundle.js',
+                'panel/js/config.datatable.js',
             ],
         ],
 

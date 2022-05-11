@@ -1,20 +1,18 @@
 <?php
 
-
 namespace App\Repositories;
 
-
 use App\Http\Requests\Panel\User\SetRoleRequest;
-use App\Http\Requests\Panel\User\StoreRequest;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class ManagerRepository
 {
     /**
-     * @return mixed
+     * @return Builder|User
      */
-    public function getAll()
+    public function getAll(): Builder|User
     {
         return User::where('level', '<', 4);
     }
@@ -32,7 +30,7 @@ class ManagerRepository
      * @param $users
      * @return mixed
      */
-    public function get($users)
+    public function get($users): mixed
     {
         return $users->get();
     }
@@ -43,7 +41,7 @@ class ManagerRepository
      */
     public function getSyncRoles(User $user, SetRoleRequest $request): void
     {
-        $user->syncRoles($request->role);
+        $user->syncRoles((array)$request->get('role'));
     }
 
     /**

@@ -21,11 +21,21 @@ class LoginRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'username'  =>  'required|email',
-            'password'  =>  'required|string|min:8'
-        ];
+            'password'  =>  'required|string|min:8',
+        ] + $this->recaptchaRules();
+    }
+
+    private function recaptchaRules(): array
+    {
+        if (config('supernova.recaptcha_login')) {
+            return [
+                recaptchaFieldName() => ['required', recaptchaRuleName()]
+            ];
+        }
+        return [];
     }
 }
