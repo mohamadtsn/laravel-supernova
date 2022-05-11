@@ -9,6 +9,7 @@
     {{-- Meta Data --}}
     <meta name="description" content="@yield('page_description', $page_description ?? '')" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     {{-- Favicon --}}
     <link rel="shortcut icon" href="{{ asset('panel/media/logos/favicon.ico') }}" />
@@ -27,7 +28,6 @@
     @yield('styles')
 
     <link rel="stylesheet" href="{{ asset('panel/plugins/global/fonts/fontiran/fontiran.css') }}">
-
 </head>
 
 <body {{ Supernova::printAttrs('body') }} {{ Supernova::printClasses('body') }}>
@@ -51,7 +51,9 @@
 {{-- Includable JS --}}
 @yield('scripts')
 
-@toastr_render
+{{-- Includ Dependensy plugins JS --}}
+@include('supernova::sweetalert')
+@include('supernova::toast')
 </body>
 </html>
 

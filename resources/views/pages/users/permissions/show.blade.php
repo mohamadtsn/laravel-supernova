@@ -3,7 +3,6 @@
 
 {{-- Content --}}
 @section('content')
-
     <div class="card card-custom">
         <div class="card-header flex-wrap border-0 pt-6 pb-0">
             <div class="card-title">
@@ -57,15 +56,14 @@
                    @foreach($permissions as $permission)
                        <div class="col-lg-3 col-6 mb-5">
                            <label class="checkbox checkbox-outline checkbox-outline-2x checkbox-primary">
-                               <input type="checkbox" value="{{ $permission->id }}" name="permissions[]" @if($user->hasPermissionTo($permission)) checked @endif>
-                               <span></span>
+                               <input type="checkbox" value="{{ $permission->id }}" name="permissions[]" @checked($user->checkPermissionTo($permission))>
+                               <span class="mr-2"></span>
                                {{ $permission->display_name }}
                            </label>
                        </div>
                    @endforeach
                </div>
                 <hr>
-
                 <button class="btn btn-info font-weight-bold mr-2">
                     ذخیره دسترسی ها
                 </button>
@@ -88,31 +86,19 @@
                 <div class="row">
                     @foreach($roles as $role)
                         <div class="col-md-3 col-6 mb-5">
-                            <label class="radio radio-primary">
-                                <input type="radio" value="{{ $role->id }}" name="role" @if($user->hasRole($role)) checked @endif>
-                                <span></span>
+                            <label class="checkbox checkbox-outline checkbox-outline-2x checkbox-danger">
+                                <input type="checkbox" value="{{ $role->id }}" name="role[]" @checked($user->hasRole($role))>
+                                <span class="mr-2"></span>
                                 {{ $role->name }}
                             </label>
                         </div>
                     @endforeach
                 </div>
                 <hr>
-
                 <button class="btn btn-success font-weight-bold mr-2">
                     ذخیره نقش
                 </button>
             </form>
         </div>
     </div>
-@endsection
-
-{{-- Styles Section --}}
-@section('styles')
-    <link href="{{ asset('panel/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css"/>
-@endsection
-
-
-{{-- Scripts Section --}}
-@section('scripts')
-    <script src="{{ asset('panel/plugins/custom/datatables/datatables.bundle.js') }}" type="text/javascript"></script>
 @endsection

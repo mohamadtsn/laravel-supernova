@@ -32,6 +32,7 @@ use Mohamadtsn\Supernova\Classes\Traits\PermissionWrapper;
  * @method static Builder|Role whereId($value)
  * @method static Builder|Role whereName($value)
  * @method static Builder|Role whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class Role extends \Spatie\Permission\Models\Role
 {

@@ -4,24 +4,25 @@ namespace Mohamadtsn\Supernova\Classes\Traits;
 
 use App\Models\User;
 use Mohamadtsn\Supernova\Classes\MenuManagerService;
-use Spatie\Permission\Traits\HasRoles;
+use Mohamadtsn\Supernova\Models\Role;
 
 trait PermissionWrapper
 {
-    use HasRoles {
-        givePermissionTo as givePermission;
-        forgetCachedPermissions as forgetCachedPermission;
-    }
-
     public function givePermissionTo(...$permissions)
     {
         $this->clearCachedMenu();
-        return $this->givePermission($permissions);
+        return parent::givePermissionTo($permissions);
+    }
+
+    public function assignRole(...$roles)
+    {
+        $this->clearCachedMenu();
+        return parent::assignRole($roles);
     }
 
     public function forgetCachedPermissions(): void
     {
-        $this->forgetCachedPermission();
+        parent::forgetCachedPermissions();
         $this->clearCachedMenu();
     }
 
@@ -33,5 +34,6 @@ trait PermissionWrapper
         $instance = app(MenuManagerService::class);
         $instance->forgetCachedMenus();
         $this instanceof User && $instance->forgetCachedMenusForUsers($this);
+        $this instanceof Role && $instance->forgetCachedMenusForUsersByRole($this);
     }
 }

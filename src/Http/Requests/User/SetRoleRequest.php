@@ -3,6 +3,9 @@
 namespace App\Http\Requests\Panel\User;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use Mohamadtsn\Supernova\Models\Role;
+use Spatie\Permission\Guard;
 
 class SetRoleRequest extends FormRequest
 {
@@ -24,7 +27,11 @@ class SetRoleRequest extends FormRequest
     public function rules()
     {
         return [
-            'role' => 'nullable|exists:roles,id'
+            'role' => [
+                'nullable',
+                'array',
+                Rule::exists('roles', 'id')->where('guard_name', Guard::getDefaultName(Role::class))
+            ],
         ];
     }
 }

@@ -10,7 +10,7 @@ class DashboardController extends Controller
     public function index()
     {
         $page_title = 'داشبورد';
-        $page_description = 'داشبورد';
+        $page_description = 'داشبورد مدیریت';
 
         return view('admin-panel.pages.dashboard', compact('page_title', 'page_description'));
     }

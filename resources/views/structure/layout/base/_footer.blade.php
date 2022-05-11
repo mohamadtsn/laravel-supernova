@@ -1,5 +1,4 @@
 {{-- Footer --}}
-
 <div class="footer bg-white pb-4 d-flex flex-lg-column pt-3 {{ Supernova::printClasses('footer', false) }}" id="kt_footer">
     {{-- Container --}}
     <div class="{{ Supernova::printClasses('footer-container', false) }} d-flex flex-column flex-md-row align-items-center justify-content-between">

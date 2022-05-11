@@ -59,22 +59,7 @@
                 <button class="btn btn-success font-weight-bold mr-2">
                     افزودن مدیریت
                 </button>
-
             </form>
-
         </div>
-
     </div>
-
-@endsection
-
-{{-- Styles Section --}}
-@section('styles')
-    <link href="{{ asset('panel/panel/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css"/>
-@endsection
-
-
-{{-- Scripts Section --}}
-@section('scripts')
-    <script src="{{ asset('panel/plugins/custom/datatables/datatables.bundle.js') }}" type="text/javascript"></script>
 @endsection

@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>ورود به مدیریت</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <link href="{{ asset('panel/css/pages/login/login-4.rtl.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{ asset('panel/css/app.css') }}">
@@ -13,6 +14,10 @@
 
     <link rel="shortcut icon" href="{{ asset('panel/media/logos/favicon.ico') }}" />
     <link rel="stylesheet" href="{{ asset('panel/plugins/global/fonts/fontiran/fontiran.css') }}">
+
+    @if(config('supernova.recaptcha_login'))
+        {!! htmlScriptTagJsApi() !!}
+    @endif
 </head>
 <body {{ Supernova::printAttrs('body') }} {{ Supernova::printClasses('body') }}>
 @if (config('supernova.layout.page-loader.type') != '')
@@ -31,7 +36,7 @@
                 </a>
 
                 <div class="login-form">
-                    <form class="form" id="kt_login_singin_form" action="{{ route('panel.login') }}" method="POST">
+                    <form class="form" id="{{ config('supernova.recaptcha_login') ? getFormId() : 'kt_login_singin_form' }}" action="{{ route('panel.login') }}" method="POST">
                         <div class="pb-5 pb-lg-15">
                             <h4 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">ورود به مدیریت</h4>
                         </div>
@@ -54,9 +59,13 @@
                         </div>
 
                         <div class="pb-lg-0 pb-5">
-                            <button type="submit" id="kt_login_singin_form_submit_button" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">
+                            @if(config('supernova.recaptcha_login'))
+                                {!! htmlFormButton('ورود', ['class' => 'btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3']) !!}
+                            @else
+                                <button type="submit" id="kt_login_singin_form_submit_button" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">
                                 ورود
                             </button>
+                            @endif
                         </div>
                     </form>
                 </div>

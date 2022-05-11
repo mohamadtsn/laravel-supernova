@@ -52,8 +52,10 @@
             </div>
 
             <div class="card-body">
-                <div class="form-group">
-                    <input type="text" name="title" class="form-control" placeholder="عنوان نقش ..." required value="{{ $role->name }}">
+                <div class="row">
+                    <div class="form-group col-4">
+                        <input type="text" name="title" class="form-control" placeholder="عنوان نقش ..." required value="{{ $role->name }}">
+                    </div>
                 </div>
             </div>
         </div>
@@ -74,8 +76,8 @@
                     @foreach($permissions as $permission)
                         <div class="col-lg-3 col-6 mb-5">
                             <label class="checkbox checkbox-outline checkbox-outline-2x checkbox-primary">
-                                <input type="checkbox" value="{{ $permission->id }}" name="permissions[]" @if($role->hasPermissionTo($permission)) checked @endif>
-                                <span></span>
+                                <input type="checkbox" value="{{ $permission->id }}" name="permissions[]" @checked($role->checkPermissionTo($permission->id))>
+                                <span class="mr-2"></span>
                                 {{ $permission->display_name }}
                             </label>
                         </div>
@@ -88,16 +90,4 @@
             </div>
         </div>
     </form>
-@endsection
-
-{{-- Styles Section --}}
-@section('styles')
-    <link href="{{ asset('panel/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css"/>
-@endsection
-
-
-{{-- Scripts Section --}}
-@section('scripts')
-    {{-- vendors --}}
-    <script src="{{ asset('panel/plugins/custom/datatables/datatables.bundle.js') }}" type="text/javascript"></script>
 @endsection

@@ -5,14 +5,14 @@ namespace App\Repositories;
 
 
 use Illuminate\Database\Eloquent\Collection;
-use Spatie\Permission\Models\Permission;
+use Mohamadtsn\Supernova\Models\Permission;
 
 class PermissionRepository
 {
     /**
      * @return Collection|Permission[]
      */
-    public function get()
+    public function get(): Collection|array
     {
         return Permission::all();
     }

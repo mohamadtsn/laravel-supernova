@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
 use Mohamadtsn\Supernova\Classes\Traits\PermissionWrapper;
 
+
 /**
  * Mohamadtsn\Supernova\Models\Permission
  *
@@ -34,6 +35,7 @@ use Mohamadtsn\Supernova\Classes\Traits\PermissionWrapper;
  * @method static Builder|Permission whereId($value)
  * @method static Builder|Permission whereName($value)
  * @method static Builder|Permission whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class Permission extends \Spatie\Permission\Models\Permission
 {

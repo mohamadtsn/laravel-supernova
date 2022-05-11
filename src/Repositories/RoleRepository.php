@@ -9,14 +9,14 @@ use App\Http\Requests\Panel\Role\UpdateRequest;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
+use Mohamadtsn\Supernova\Models\Role;
 
 class RoleRepository
 {
     /**
      * @return Builder
      */
-    public function get()
+    public function get(): Builder
     {
         return Role::query();
     }
@@ -38,7 +38,7 @@ class RoleRepository
     public function getUpdate(Role $role, UpdateRequest $request): void
     {
         $role->update([
-            'name' => $request->title
+            'name' => $request->get('title')
         ]);
     }
 
@@ -64,19 +64,18 @@ class RoleRepository
      * @param StoreRequest $request
      * @return Builder|Model
      */
-    public function create(StoreRequest $request)
+    public function create(StoreRequest $request): Model|Builder
     {
         return Role::create([
-            'name' => $request->title,
-            'guard_name' => "web",
+            'name' => $request->get('title'),
         ]);
     }
 
     /**
-     * @param Model $role
+     * @param Role $role
      * @param $permissions
      */
-    public function syncPermissions(Model $role, $permissions): void
+    public function syncPermissions(Role $role, $permissions): void
     {
         $role->syncPermissions($permissions);
     }

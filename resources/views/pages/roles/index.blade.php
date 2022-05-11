@@ -3,7 +3,6 @@
 
 {{-- Content --}}
 @section('content')
-
     <div class="card card-custom">
         <div class="card-header flex-wrap border-0 pt-6 pb-0">
             <div class="card-title">
@@ -26,41 +25,12 @@
                                 fill="#000000" opacity="0.3"/>
                         </g>
                     </svg>
-                    <!--end::Svg Icon-->
                 </span>افزودن نقش جدید</a>
-                <!--end::Button-->
             </div>
         </div>
 
         <div class="card-body">
-
-            <!--begin::Search Form-->
-            <form action="{{ route('panel.roles.index') }}" method="GET">
-                <div class="mt-2 mb-5 mt-lg-5 mb-lg-10">
-                    <div class="row align-items-center">
-                        <div class="col-lg-5 col-xl-4">
-                            <div class="row align-items-center">
-                                <div class="col-md-12 my-2 my-md-0">
-                                    <div class="input-icon">
-                                        <input type="text" class="form-control" placeholder="جستجو ..."
-                                               id="kt_datatable_search_query" name="name"
-                                               value="{{ request('name') }}"/>
-                                        <span><i class="flaticon2-search-1 text-muted"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-xl-4 mt-5 mt-lg-0">
-                            <button class="btn btn-light-primary px-6 font-weight-bold" type="submit">
-                                جستجو
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <!--end::Search Form-->
-
-            <table class="table table-bordered table-hover" id="datatable_admin_list">
+            <table class="table table-bordered table-hover text-center" id="datatable_roles">
                 <thead>
                 <tr>
                     <th>کد نقش</th>
@@ -74,8 +44,7 @@
                         <td>{{ $role->id }}</td>
                         <td>{{ $role->name }}</td>
                         <td>
-                            <a href="{{ route('panel.roles.show', ['role' => $role]) }}"
-                               class="btn btn-sm btn-clean btn-icon" title="دسترسی">
+                            <a href="{{ route('panel.roles.show', ['role' => $role]) }}" class="btn btn-sm btn-clean btn-icon" data-toggle="tooltip" data-theme="dark" title="دسترسی ها">
                                 <span class="svg-icon svg-icon-lg svg-icon-primary">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -91,21 +60,6 @@
                 @endforeach
                 </tbody>
             </table>
-
         </div>
-
     </div>
-
-@endsection
-
-{{-- Styles Section --}}
-@section('styles')
-    <link href="{{ asset('panel/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css"/>
-@endsection
-
-
-{{-- Scripts Section --}}
-@section('scripts')
-    {{-- vendors --}}
-    <script src="{{ asset('panel/plugins/custom/datatables/datatables.bundle.js') }}" type="text/javascript"></script>
 @endsection

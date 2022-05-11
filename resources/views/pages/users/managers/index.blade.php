@@ -33,33 +33,6 @@
         </div>
 
         <div class="card-body">
-
-            <!--begin::Search Form-->
-            <form action="{{ route('panel.managers.index') }}" method="GET">
-                <div class="mt-2 mb-5 mt-lg-5 mb-lg-10">
-                    <div class="row align-items-center">
-                        <div class="col-lg-5 col-xl-4">
-                            <div class="row align-items-center">
-                                <div class="col-md-12 my-2 my-md-0">
-                                    <div class="input-icon">
-                                        <input type="text" class="form-control" placeholder="جستجو ..."
-                                               id="kt_datatable_search_query" name="name"
-                                               value="{{ request('name') }}"/>
-                                        <span><i class="flaticon2-search-1 text-muted"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-xl-4 mt-5 mt-lg-0">
-                            <button class="btn btn-light-primary px-6 font-weight-bold" type="submit">
-                                جستجو
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <!--end::Search Form-->
-
             <table class="table table-bordered table-hover" id="datatable_admin_list">
                 <thead>
                 <tr>
@@ -152,15 +125,4 @@
 
     </div>
 
-@endsection
-
-{{-- Styles Section --}}
-@section('styles')
-    <link href="{{ asset('panel/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css"/>
-@endsection
-
-
-{{-- Scripts Section --}}
-@section('scripts')
-    <script src="{{ asset('panel/plugins/custom/datatables/datatables.bundle.js') }}" type="text/javascript"></script>
 @endsection
