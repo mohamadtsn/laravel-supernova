@@ -26,9 +26,17 @@ trait PermissionWrapper
         $this->clearCachedMenu();
     }
 
-    /**
-     * @return void
-     */
+    public function hasPermissionTo($permission, $guardName = null): bool
+    {
+        is_string($permission) && !is_numeric($permission) && $this->revisionPermission($permission);
+        return parent::hasPermissionTo($permission, $guardName);
+    }
+
+    private function revisionPermission(&$permission): void
+    {
+        $permission = preg_replace(['/^PUT-*/', '/^PATCH-*/'], '[PUT/PATCH]-', $permission);
+    }
+    
     private function clearCachedMenu(): void
     {
         $instance = app(MenuManagerService::class);

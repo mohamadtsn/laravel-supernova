@@ -17,6 +17,9 @@ class PermissionSyncCommand extends Command
 
     public function handle(): void
     {
+        // Clear Old permissions
+        Artisan::call('permission:cache-reset');
+
         $permissions = [];
         foreach ($this->getRoutes() as $route) {
             $ignore = false;
@@ -76,7 +79,7 @@ class PermissionSyncCommand extends Command
             }
 
             $permissions[] = [
-                'name' => "$route->method-/$route->url",
+                'name' => "{$this->revisionMethodRequest($route->method)}-/$route->url",
                 'guard_name' => config('supernova.default_guard'),
                 'display_name' => $displayName ?? null,
             ];
@@ -91,8 +94,6 @@ class PermissionSyncCommand extends Command
             Permission::upsert($permissions, 'name');
         }
 
-
-        Artisan::call('permission:cache-reset');
         $this->comment('All permissions are synced by routes');
     }
 
@@ -194,5 +195,14 @@ class PermissionSyncCommand extends Command
     private function cleanString(string $word): array|string|null
     {
         return preg_replace('/[^A-Za-z\d\-\_]/', '', $word);
+    }
+
+    /**
+     * @param $method
+     * @return string
+     */
+    private function revisionMethodRequest($method): string
+    {
+        return in_array($method, ['PUT', 'PATCH']) ? '[PUT/PATCH]' : $method;
     }
 }
