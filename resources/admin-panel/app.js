@@ -12,9 +12,9 @@ window.Services = {
         booted: [],
     },
 
-    bootApp: function () {
-        this.bootProviderCallback.booting().boot().booted();
-        this.bootOnLoadCallback.booting().boot().booted();
+    start: function () {
+        this.bootProviderCallback.init();
+        this.bootOnLoadCallback.init();
     },
 
     isEmpty: function (data) {
@@ -318,42 +318,46 @@ window.Services = {
     },
 
     bootOnLoadCallback: {
-        boot: function () {
+        init: function () {
+            const $this = this;
+            $(window).on("load", function (event) {
+                $this.booting(event);
+                $this.boot(event);
+                $this.booted(event);
+            });
+        },
+        boot: function (event) {
             const $boot = Services.onLoadCallbacks.boot;
             if ($boot.length > 0) {
-                $(window).on("load", function (event) {
-                    $boot.forEach(function (item) {
-                        item.callback(...[event, ...item.arguments]);
-                    })
-                });
+                $boot.forEach(function (item) {
+                    item.callback(...[event, ...item.arguments]);
+                })
             }
-            return this;
         },
-        booting: function () {
+        booting: function (event) {
             const $boot = Services.onLoadCallbacks.booting;
             if ($boot.length > 0) {
-                $(window).on("load", function (event) {
-                    $boot.forEach(function (item) {
-                        item.callback(...[event, ...item.arguments]);
-                    })
+                $boot.forEach(function (item) {
+                    item.callback(...[event, ...item.arguments]);
                 });
             }
-            return this;
         },
-        booted: function () {
+        booted: function (event) {
             const $boot = Services.onLoadCallbacks.booted;
             if ($boot.length > 0) {
-                $(window).on("load", function (event) {
-                    $boot.forEach(function (item) {
-                        item.callback(...[event, ...item.arguments]);
-                    })
-                });
+                $boot.forEach(function (item) {
+                    item.callback(...[event, ...item.arguments]);
+                })
             }
-            return this;
         }
     },
 
     bootProviderCallback: {
+        init: function () {
+            this.booting()
+            this.boot()
+            this.booted()
+        },
         boot: function () {
             const $boot = Services.providerCallbacks.boot;
             if ($boot.length > 0) {
@@ -361,7 +365,6 @@ window.Services = {
                     item.callback(...item.arguments);
                 })
             }
-            return this
         },
         booting: function () {
             const $boot = Services.providerCallbacks.booting;
@@ -370,7 +373,6 @@ window.Services = {
                     item.callback(...item.arguments);
                 })
             }
-            return this
         },
         booted: function () {
             const $boot = Services.providerCallbacks.booted;
@@ -379,7 +381,6 @@ window.Services = {
                     item.callback(...item.arguments);
                 })
             }
-            return this
         }
     },
 
@@ -410,6 +411,21 @@ window.Services = {
                 $('body').removeClass('page-loading');
                 resolve(this);
             });
+        });
+    }
+}
+
+window.SupernovaApp = {
+    start: function () {
+        this.initProviders();
+        Services.start();
+    },
+
+    initProviders: function () {
+        RegistererProviderCallback.booting(function () {
+            customFunctions.init();
+            actionHandler.init();
+            RegistererOnLoadCallback.booting(Services.initPageLoader);
         });
     }
 }
@@ -698,12 +714,4 @@ function sweetAlert(id, text, icon, target, confirmText = "بله اطمینان
     });
 }
 
-$(function () {
-    RegistererProviderCallback.booting(function () {
-        customFunctions.init();
-        actionHandler.init();
-        RegistererOnLoadCallback.booting(Services.initPageLoader);
-    });
-
-    Services.bootApp();
-});
+SupernovaApp.start();
