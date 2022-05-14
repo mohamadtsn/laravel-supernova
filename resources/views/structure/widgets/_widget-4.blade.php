@@ -14,6 +14,6 @@
                 <span class="text-muted font-weight-bold mt-2">New Users</span>
             </div>
         </div>
-        <div id="kt_stats_widget_12_chart" class="card-rounded-bottom"  style="height: 150px"></div>
+        <div id="kt_stats_widget_12_chart" class="card-rounded-bottom" style="height: 150px"></div>
     </div>
 </div>
