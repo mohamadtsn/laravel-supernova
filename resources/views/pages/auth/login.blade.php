@@ -83,5 +83,9 @@
 @foreach(config('supernova.layout.resources.js') as $script)
     <script src="{{ asset($script) }}" type="text/javascript"></script>
 @endforeach
+
+{{-- Includ Notification plugins JS --}}
+@include('supernova::sweetalert')
+@include('supernova::toast')
 </body>
 </html>
