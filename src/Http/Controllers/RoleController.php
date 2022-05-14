@@ -10,7 +10,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Mohamadtsn\Supernova\Models\Role;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
@@ -33,20 +32,13 @@ class RoleController extends Controller
     }
 
     /**
-     * @param Request $request
      * @return Application|Factory|View
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
-    public function index(Request $request)
+    public function index()
     {
         $roles = $this->roleRepo->get();
-
-        if ($request->get('name')) {
-            $this->roleRepo->getLike($roles, $request);
-        }
-
-        $roles = $roles->get();
 
         return view('admin-panel.pages.roles.index', [
             'page_title' => 'نقش ها',
@@ -67,7 +59,7 @@ class RoleController extends Controller
             'permissions' => $permissions,
             'role' => $role,
             'page_title' => 'دسترسی ها',
-            'page_description' => ' - در این قسمت میتوانید دسترسی های یک نقش را مشاهده کنید',
+            'page_description' => ' - در این قسمت میتوانید دسترسی های یک نقش را مشاهده کنید.',
         ]);
     }
 
@@ -82,12 +74,17 @@ class RoleController extends Controller
             $this->roleRepo->getValidate($request);
         }
 
+        if (auth()->user()->hasRole($role)) {
+            alert()->error('توقف عملیات', 'شما مجاز به انجام این عملیات نیستید.');
+            return back();
+        }
+
         $permissions = $request->input('permissions');
 
         $this->roleRepo->getUpdate($role, $request);
         $this->roleRepo->getSyncPermissions($role, $permissions);
 
-        alert()->success('عملیات موفق', 'عملیات با موفقیت انجام شد.');
+        alert()->success('عملیات موفق', "نقش \"$role->name\" با موفقیت ویرایش شد.");
         return back();
     }
 
@@ -117,8 +114,8 @@ class RoleController extends Controller
 
         $this->roleRepo->syncPermissions($role, $permissions);
 
-        toastr()->info('ایجاد نقش با موفقیت انجام شد.');
+        toastr()->success('ایجاد نقش با موفقیت انجام شد.');
 
-        return back();
+        return redirect()->route('panel.roles.index');
     }
 }
