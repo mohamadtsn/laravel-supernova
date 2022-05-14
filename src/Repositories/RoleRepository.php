@@ -7,6 +7,7 @@ namespace App\Repositories;
 use App\Http\Requests\Panel\Role\StoreRequest;
 use App\Http\Requests\Panel\Role\UpdateRequest;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Mohamadtsn\Supernova\Models\Role;
@@ -14,11 +15,11 @@ use Mohamadtsn\Supernova\Models\Role;
 class RoleRepository
 {
     /**
-     * @return Builder
+     * @return Collection|Role[]
      */
-    public function get(): Builder
+    public function get()
     {
-        return Role::query();
+        return Role::all();
     }
 
     /**

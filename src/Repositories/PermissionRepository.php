@@ -12,7 +12,7 @@ class PermissionRepository
     /**
      * @return Collection|Permission[]
      */
-    public function get(): Collection|array
+    public function get()
     {
         return Permission::all();
     }
