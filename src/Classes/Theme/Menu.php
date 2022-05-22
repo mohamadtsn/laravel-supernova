@@ -78,7 +78,7 @@ class Menu
 
             // set `Dynamical` check active vertical menu item
             $item_json = json_encode($item, JSON_THROW_ON_ERROR);
-            $item_class .= "@if(isset(json_decode('$item_json', true)['submenu']) && \Menu::isActiveVerMenuItem(json_decode('$item_json', true), request()->path())) menu-item-open menu-item-here @elseif(\Menu::isActiveVerMenuItem(json_decode('$item_json', true), request()->path())) menu-item-active @endif";
+            $item_class .= " @if(isset(json_decode('$item_json', true)['submenu']) && \Menu::isActiveVerMenuItem(json_decode('$item_json', true), request()->path())) menu-item-open menu-item-here @elseif(\Menu::isActiveVerMenuItem(json_decode('$item_json', true), request()->path())) menu-item-active @endif";
 
             echo '<li class="menu-item ' . $item_class . '" aria-haspopup="true" ' . $item_attr . '>';
             if (isset($item['parent'])) {
