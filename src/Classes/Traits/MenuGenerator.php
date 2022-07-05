@@ -18,6 +18,16 @@ trait MenuGenerator
         $middle_item = [];
         foreach ($other_items as $value) {
             if (!isset($value['section'])) {
+                if (isset($value['title'], $value['submenu'])) {
+                    foreach ($value['submenu'] as $submenu) {
+                        if (self::hasPermission($submenu)) {
+                            $middle_item[] = $submenu;
+                        }
+                    }
+
+                    return count($middle_item) > 0;
+                }
+
                 if (isset($value['title']) && self::hasPermission($value)) {
                     $middle_item[] = $value;
                 }
@@ -31,6 +41,17 @@ trait MenuGenerator
     private static function hasPermission($item): bool
     {
         $user = auth('admin')->user();
+
+        if (isset($item['submenu'])) {
+            $item_permissions = [];
+            foreach ($item['submenu'] as $submenu) {
+                if (self::hasPermission($submenu)) {
+                    $item_permissions[] = true;
+                }
+            }
+            return count($item_permissions) !== 0;
+        }
+
         if (isset($item['page'])) {
             if (is_array($item['page'])) {
                 foreach ($item['page'] as $single_page) {
