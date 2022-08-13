@@ -1,8 +1,8 @@
 @if (Session::has('alert.config'))
     <script>
-        RegistererOnLoadCallback.booted(function () {
+        window.RegistererOnLoadCallback.booted(function () {
             window.preloader.then(() => {
-                Swal.fire({!! Session::pull('alert.config') !!});
+                window.Swal.fire({!! Session::pull('alert.config') !!});
             });
         });
     </script>
