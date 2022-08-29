@@ -1,14 +1,14 @@
 {{-- Page Loader Types --}}
 
 {{-- Default --}}
-@if (config('supernova.layout.page-loader.type') == 'default')
+@if (config('supernova.layout.page-loader.type') === 'default')
 	<div class="page-loader">
 		<div class="spinner spinner-primary"></div>
 	</div>
 @endif
 
 {{-- Spinner Message --}}
-@if (config('supernova.layout.page-loader.type') == 'spinner-message')
+@if (config('supernova.layout.page-loader.type') === 'spinner-message')
 	<div class="page-loader page-loader-base">
 		<div class="blockui">
 			<span>کمی صبر کنید...</span>
@@ -18,7 +18,7 @@
 @endif
 
 {{-- Spinner Logo --}}
-@if (config('supernova.layout.page-loader.type') == 'spinner-logo')
+@if (config('supernova.layout.page-loader.type') === 'spinner-logo')
 	<div class="page-loader page-loader-logo">
 		<img alt="{{ config('app.name') }}" src="{{ asset('panel/media/logos/logo-letter-1.png') }}" />
 		<div class="spinner spinner-primary"></div>

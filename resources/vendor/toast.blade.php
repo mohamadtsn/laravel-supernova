@@ -1,7 +1,5 @@
-<script>
-    window.RegistererOnLoadCallback.booted(function () {
-        window.preloader.then(() => {
-            {!! str_replace(['<script type="text/javascript">', '</script>'], '', app('toastr')->render()) !!}
-        });
-    });
-</script>
+@if(SupernovaToaster::hasToaster())
+	<script>
+		{!! SupernovaToaster::renderRaw(); !!}
+	</script>
+@endif

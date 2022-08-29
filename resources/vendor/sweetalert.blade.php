@@ -1,9 +1,5 @@
-@if (Session::has('alert.config'))
+@if (SupernovaSweetAlert::hasSweetAlert())
     <script>
-        window.RegistererOnLoadCallback.booted(function () {
-            window.preloader.then(() => {
-                window.Swal.fire({!! Session::pull('alert.config') !!});
-            });
-        });
+        {!! SupernovaSweetAlert::renderRaw() !!}
     </script>
 @endif

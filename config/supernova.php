@@ -510,7 +510,11 @@ return [
                     'gray-900' => '#212121'
                 ]
             ],
-            'font-family' => 'IRANSans'
+            'font-family' => 'IRANSans',
+            'sweetalert_signature' => env('SUPERNOVA_SWEETALERT_DATA', 'sweetAlertData'),
+            'toaster_signature' => env('SUPERNOVA_TOASTER_DATA', 'toasterData'),
+            'toaster_signature_options' => env('SUPERNOVA_TOASTER_OPTIONS', 'options'),
+            'toaster_signature_notifications' => env('SUPERNOVA_TOASTER_NOTIFICATIONS', 'notifications'),
         ],
 
         // Page loader

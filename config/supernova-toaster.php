@@ -4,6 +4,12 @@ return [
     // Limit the number of displayed toasts
     'maxItems' => null,
 
+    'js' => [
+        'global_object' => 'toasterData',
+        'options_object' => 'options',
+        'notifications_object' => 'notifications',
+    ],
+
     'options' => [
         'closeButton'       => true,
         'closeClass'        => 'toast-close-button',

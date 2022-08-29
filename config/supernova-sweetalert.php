@@ -209,4 +209,8 @@ return [
         'footer' => env('SWEET_ALERT_FOOTER_CLASS'),
     ],
 
+
+    'render' => [
+        'global_object' => env('SUPERNOVA_SWEETALERT_DATA', 'sweetAlertData')
+    ]
 ];
