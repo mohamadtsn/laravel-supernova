@@ -7,7 +7,7 @@
     "homepage": "https://github.com/mohamadtsn/laravel-supernova",
     "authors": [
         {
-            "name": "Mohamad Borzoyi",
+            "name": "Mohammad Borzoyi",
             "email": "mohamad.borzoyi@gmail.com"
         }
     ],
@@ -30,11 +30,15 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Mohamadtsn\\Supernova\\SupernovaServiceProvider"
+                "Mohamadtsn\\Supernova\\SupernovaServiceProvider",
+                "Mohamadtsn\\Supernova\\Classes\\Notifications\\Toaster\\SupernovaToasterServiceProvider",
+                "Mohamadtsn\\Supernova\\Classes\\Notifications\\SweetAlert\\SupernovaSweetAlertServiceProvider"
             ],
             "aliases": {
                 "Supernova": "Mohamadtsn\\Supernova\\Facade\\Supernova",
-                "Menu": "Mohamadtsn\\Supernova\\Facade\\Menu"
+                "Menu": "Mohamadtsn\\Supernova\\Facade\\Menu",
+                "SupernovaSweetAlert": "Mohamadtsn\\Supernova\\Classes\\Notifications\\SweetAlert\\Facades\\SupernovaSweetAlert",
+                "SupernovaToaster": "Mohamadtsn\\Supernova\\Classes\\Notifications\\Toaster\\Facades\\SupernovaToaster"
             }
         }
     }

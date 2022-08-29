@@ -32,7 +32,7 @@
 
 <body {{ Supernova::printAttrs('body') }} {{ Supernova::printClasses('body') }}>
 
-@if (config('supernova.layout.page-loader.type') != '')
+@if (config('supernova.layout.page-loader.type') !== '')
     @include('admin-panel.structure.layout.partials._page-loader')
 @endif
 
@@ -40,7 +40,7 @@
 
 {{-- Global Config (global config for global JS scripts) --}}
 <script>
-    var KTAppSettings = {!! json_encode(config('supernova.layout.js'), JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES) !!};
+    var KTAppSettings = {!! json_encode(config('supernova.layout.js'), JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) !!};
 </script>
 
 {{-- Global Theme JS Bundle (used by all pages)  --}}

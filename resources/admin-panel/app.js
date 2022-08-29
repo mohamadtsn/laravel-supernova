@@ -426,6 +426,11 @@ window.SupernovaApp = {
             customFunctions.init();
             actionHandler.init();
             RegistererOnLoadCallback.booting(Services.initPageLoader);
+            RegistererOnLoadCallback.booted(function () {
+                preloader.then(() => {
+                    Swal.fire(window[KTAppSettings.sweetalert_signature]);
+                });
+            });
         });
     }
 }
