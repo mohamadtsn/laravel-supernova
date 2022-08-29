@@ -12,7 +12,7 @@ class SupernovaSweetAlertServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../../../../config/supernova-sweetalert.php',
+            __DIR__ . '/../../../../config/sweetalert.php',
             'sweetalert'
         );
 

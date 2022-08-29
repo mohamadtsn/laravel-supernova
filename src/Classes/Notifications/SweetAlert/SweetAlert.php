@@ -11,7 +11,7 @@ class SweetAlert
 
     public function renderRaw(): string
     {
-        $object_name = config('supernova-sweetalert.render.global_object', 'sweetAlertData');
+        $object_name = config('sweetalert.render.global_object', 'sweetAlertData');
         return "window.$object_name = " . $this->getAlertConfiguration() .';';
     }
 
