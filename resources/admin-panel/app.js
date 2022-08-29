@@ -428,7 +428,19 @@ window.SupernovaApp = {
             RegistererOnLoadCallback.booting(Services.initPageLoader);
             RegistererOnLoadCallback.booted(function () {
                 preloader.then(() => {
-                    Swal.fire(window[KTAppSettings.sweetalert_signature]);
+                    // showing sweetalert`s
+                    if (typeof window[KTAppSettings.sweetalert_signature] !== 'undefined') {
+                        Swal.fire(window[KTAppSettings.sweetalert_signature]);
+                    }
+
+                    // showing toaster`s
+                    if (typeof window[KTAppSettings.toaster_signature] !== 'undefined') {
+                        const {options, notifications} = window[KTAppSettings.toaster_signature];
+                        toastr.options = options
+                        notifications.map((notification) => {
+                            toastr[notification.type](notification.message, notification.title, JSON.parse(notification.options))
+                        });
+                    }
                 });
             });
         });
