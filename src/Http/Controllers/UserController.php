@@ -42,7 +42,7 @@ class UserController extends Controller
     public function permissions(User $user)
     {
         $permissions = $this->permissionRepo->get();
-        $roles = $this->roleRepo->get()->get();
+        $roles = $this->roleRepo->get();
         return view('admin-panel.pages.users.permissions.show', [
             'user' => $user,
             'roles' => $roles,

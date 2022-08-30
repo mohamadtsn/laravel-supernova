@@ -428,7 +428,19 @@ window.SupernovaApp = {
             RegistererOnLoadCallback.booting(Services.initPageLoader);
             RegistererOnLoadCallback.booted(function () {
                 preloader.then(() => {
-                    Swal.fire(window[KTAppSettings.sweetalert_signature]);
+                    // showing sweetalert`s
+                    if (typeof window[KTAppSettings.sweetalert_signature] !== 'undefined') {
+                        Swal.fire(window[KTAppSettings.sweetalert_signature]);
+                    }
+
+                    // showing toaster`s
+                    if (typeof window[KTAppSettings.toaster_signature] !== 'undefined') {
+                        const {options, notifications} = window[KTAppSettings.toaster_signature];
+                        toastr.options = options
+                        notifications.map((notification) => {
+                            toastr[notification.type](notification.message, notification.title, JSON.parse(notification.options))
+                        });
+                    }
                 });
             });
         });
@@ -674,6 +686,7 @@ window.actionHandler = {
     init: function () {
         this.onReady();
         this.clickEvent.adminDelete();
+        this.clickEvent.togglePassword();
     },
 
     onReady: function () {
@@ -691,7 +704,23 @@ window.actionHandler = {
                 let target = "deleteAdmin";
                 sweetAlert(item_id, text, icon, target);
             });
-        }
+        },
+        togglePassword: function () {
+            const $elem_class = 'toggle-password';
+            const $elem = $(document).find('.'.concat($elem_class));
+            $elem.on('click', function () {
+                const $this = $(this);
+                const $parent_elem = $(this).closest('div');
+                const $password_input = $parent_elem.find('input');
+                if ($password_input.attr('type') === 'password') {
+                    $password_input.attr('type', 'text');
+                    $this.removeClass('fa-eye-slash').addClass('fa-eye');
+                    return;
+                }
+                $password_input.attr('type', 'password');
+                $this.removeClass('fa-eye').addClass('fa-eye-slash');
+            });
+        },
     },
 }
 

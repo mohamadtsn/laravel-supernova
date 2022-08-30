@@ -37,7 +37,10 @@ class ManagerController extends Controller
 
     public function create()
     {
-        return view('admin-panel.pages.users.managers.create');
+        return view('admin-panel.pages.users.managers.create', [
+            'page_description' => '- در این قسمت میتوانید یک مدیر جدید ایجاد کنید.',
+            'page_title' => 'ایجاد مدیر جدید',
+        ]);
     }
 
     public function store(StoreRequest $request)
