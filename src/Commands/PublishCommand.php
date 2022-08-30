@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 
 class PublishCommand extends Command
 {
-    protected $signature = 'supernova:publish {--F|force: rewriting all files }';
+    protected $signature = 'supernova:publish {--F|force : rewriting all files }';
 
     protected $description = 'publish resources package';
 
