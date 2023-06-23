@@ -53,7 +53,6 @@
 
 {{-- Includ Notification plugins JS --}}
 @include('supernova::sweetalert')
-@include('supernova::toast')
 </body>
 </html>
 

@@ -9,7 +9,7 @@
                 {{ @$page_title }}
 
                 @if (isset($page_description) && config('supernova.layout.subheader.displayDesc'))
-                    <small>{{ @$page_description }}</small>
+                    <small> - {{ @$page_description }}</small>
                 @endif
             </h5>
 
