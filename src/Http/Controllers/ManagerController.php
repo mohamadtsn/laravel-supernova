@@ -6,55 +6,53 @@ use App\Repositories\ManagerRepository;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Panel\User\StoreRequest;
 use App\Models\User;
+use App\Repositories\PermissionRepository;
+use App\Repositories\RoleRepository;
 use Illuminate\Http\Request;
+use Mohamadtsn\Repository\Contracts\RepositoryProvisions;
 
-class ManagerController extends Controller
+/**
+ * @method ManagerRepository|PermissionRepository|RoleRepository repository(string $name = null)
+ */
+class ManagerController extends Controller implements RepositoryProvisions
 {
-    public const TITLE = 'لیست مدیران';
-    public const DESCRIPTION = '- در این قسمت میتوانید لیست مدیران را مشاهده کنید';
-
-    public function __construct()
-    {
-        $this->managerRepo = resolve(ManagerRepository::class);
-    }
-
     public function index(Request $request)
     {
-        $users = $this->managerRepo->getAll();
-
-        if ($request->get('name')) {
-            $this->managerRepo->getLike($users, $request);
-        }
-
-        $users = $this->managerRepo->get($users);
+        $users = $this->repository()->getAll();
 
         return view('admin-panel.pages.users.managers.index', [
-            'page_description' => self::DESCRIPTION,
-            'page_title' => self::TITLE,
-            'users' => $users
+            'page_description' => 'در این قسمت میتوانید لیست مدیران را مشاهده کنید',
+            'page_title' => 'لیست مدیران',
+            'users' => $users,
         ]);
     }
 
     public function create()
     {
         return view('admin-panel.pages.users.managers.create', [
-            'page_description' => '- در این قسمت میتوانید یک مدیر جدید ایجاد کنید.',
+            'page_description' => 'در این قسمت میتوانید یک مدیر جدید ایجاد کنید.',
             'page_title' => 'ایجاد مدیر جدید',
         ]);
     }
 
     public function store(StoreRequest $request)
     {
-        $this->managerRepo->userCreate($request->name, $request->email, $request->password);
+        $this->repository()->userCreate($request);
 
-        return back()->with('success', 'مدیریت با موفقیت اضافه شد');
+        alert()?->success('عملیات موفق', 'مدیر جدید با موفقیت اضافه شد.')->showConfirmButton('باشه', false);
+        return redirect()->route('panel.managers.index');
     }
 
     public function destroy(User $manager)
     {
-        $this->managerRepo->delete($manager);
+        $this->repository()->delete($manager);
 
-        toastr()->success('مدیریت با موفقیت حذف شد');
+        alert()?->success('عملیات موفق', 'مدیریت با موفقیت حذف شد!')->showConfirmButton('باشه', false);
         return back();
+    }
+
+    public static function getName(): string
+    {
+        return 'Manager';
     }
 }
