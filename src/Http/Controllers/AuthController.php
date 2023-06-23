@@ -21,17 +21,18 @@ class AuthController extends Controller
 
     public function login(LoginRequest $request): RedirectResponse
     {
-        $user = User::where('email', $request->get('username'))->where('level', '<', '4')->first();
+        $user = User::where('email', $request->get('username'))->where('level', '<', 4)->first();
         if (!$user || !Hash::check($request->get('password'), $user->password)) {
-            return back()->withErrors(['username' => 'نام کاربری یا رمز عبور صحیح نمی باشد.']);
-        }
-
-        if ($user->status !== 'active') {
-            alert()->error('تعلیق حساب کاربری', 'حساب کاربری شما تعلیق یا غیرفعال شده است. برای کسب اطلاعات بیشتر با پشتیبانی تماس بگیرید.')->showConfirmButton('متوجه شدم!');
+            alert()->error('اطلاعات نامعتبر', 'نام کاربری یا رمز عبور صحیح نمی باشد.')->showConfirmButton('متوجه شدم!', false);
             return back();
         }
 
-        Auth::guard('admin')->loginUsingId($user->id);
+        if ($user->status !== 'active') {
+            alert()->error('تعلیق حساب کاربری', 'حساب کاربری شما تعلیق یا غیرفعال شده است. برای کسب اطلاعات بیشتر با پشتیبانی تماس بگیرید.')->showConfirmButton('متوجه شدم!', false);
+            return back();
+        }
+
+        Auth::guard('admin')->loginUsingId($user->id, app()->isLocal());
         return redirect()->route('panel.index');
     }
 

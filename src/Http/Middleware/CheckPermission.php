@@ -4,19 +4,13 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class CheckPermission
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param Request $request
-     * @param Closure $next
-     * @return mixed
-     */
     public function handle(Request $request, Closure $next)
     {
-        $user = auth('admin')->user();
+        $user = admin();
         if (
             !$user ||
             $user->level >= 4 ||
@@ -26,7 +20,15 @@ class CheckPermission
                 !$user->checkPermissionTo($request->method() . '-/' . $request->route()->uri)
             )
         ) {
-            toastr()->error('شما مجوز دسترسی به این صفحه/عملیات را ندارید!');
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'title' => 'دسترسی غیرمجاز',
+                    'text' => 'شما مجوز دسترسی به این صفحه/عملیات را ندارید!',
+                    'type' => 'error',
+                ], Response::HTTP_FORBIDDEN);
+            }
+
+            alert()->error('درخواست غیرمجاز', 'شما مجوز دسترسی به این صفحه/عملیات را ندارید!');
             return redirect()->route('panel.index');
         }
         return $next($request);

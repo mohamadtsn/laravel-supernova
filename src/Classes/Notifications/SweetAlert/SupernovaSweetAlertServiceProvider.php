@@ -6,9 +6,6 @@ use Illuminate\Support\ServiceProvider;
 
 class SupernovaSweetAlertServiceProvider extends ServiceProvider
 {
-    /**
-     * Register services.
-     */
     public function register()
     {
         $this->mergeConfigFrom(

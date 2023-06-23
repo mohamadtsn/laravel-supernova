@@ -11,16 +11,20 @@
 */
 
 
-use App\Http\Controllers\Panel\UserController;
-use App\Http\Controllers\Panel\DashboardController;
 use App\Http\Controllers\Panel\AuthController;
+use App\Http\Controllers\Panel\DashboardController;
 use App\Http\Controllers\Panel\ManagerController;
 use App\Http\Controllers\Panel\RoleController;
+use App\Http\Controllers\Panel\UserController;
+use Illuminate\Support\Facades\Route;
 
 Route::as('panel.')->group(function () {
 
     //login & logout
-    Route::controller(AuthController::class)->group(function () {
+    Route::group([
+        'controller' => AuthController::class,
+        'middleware' => 'guest',
+    ], static function () {
         Route::get('/login', 'loginPage')->name('login_view');
         Route::post('/login', 'login')->name('login');
         Route::get('/logout', 'logout')->name('logout');
