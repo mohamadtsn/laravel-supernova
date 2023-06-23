@@ -11,47 +11,52 @@
 -----------------------
 
 ## Installation: :arrow_down:
+
 ```bash
 composer require mohamadtsn/laravel-supernova
 ```
 
 ## configuration: :gear:
-__Publish config file__
+
+__Publishing Base Vendor Files__
+
 ```bash
-php artisan vendor:publish --tag=supernova-config --force
+php artisan supernova:publish [tags] --force
+```
+
+### **Tag list:**
+
+- supernova-resources
+- supernova-base-resources
+- supernova-config
+- supernova-migrations
+- supernova-virtual-host-routes
+- supernova-recaptcha-config
+- supernova-basic-routes
+
+__Publishing Custom Vendor File__
+
+```bash
+php artisan supernova:publish [tags] --force
 ```
 
 Change locale to `fa` in `config/app.php`
+
 ```php
 'locale' => 'fa',
 ```
 
-:electric_plug: (For Laravel <=5.4) Next, you must add the service provider to `config/app.php` :electric_plug:
-```php
-'providers' => [
-    // for laravel 5.4 and below
-    App\Providers\MetronicServiceProvider::class,
-];
-```
-
-Add this to your `Aliases` in `config/app.php`
-
-```php
-'aliases' => [
-    // other aliases
-    'Supernova' => App\Classes\Theme\Supernova::class,
-    'Menu' => App\Classes\Theme\Menu::class,
-],
-```
  -----------------
-### Do in Laravel 8:
-Put this in `App\Models\User.php`
-```php
-use Spatie\Permission\Traits\HasRoles; // use permission trait
 
-class User extends Authenticatable
+### Change Parent Class User Model:
+Put this in `App\Models\User.php`
+
+```php
+use Mohamadtsn\Supernova\Models\User as SupernovaUser; // use supernova User Model
+use Mohamadtsn\Supernova\Classes\Traits\PermissionWrapper;
+class User extends SupernovaUser
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles // use trait in User class;
+    use HasApiTokens, HasFactory, Notifiable, PermissionWrapper;
     // other class methods
 }
 ```
@@ -61,20 +66,6 @@ Add `level` to `fillable` fields in `App\Models\User.php`.
 protected $fillable = [
     'level',
 ];
-```
-
-Change `composer.json` autoload section and add `helpers.php` to `files` section like below:
-```json
-{
-  "autoload": {
-    "psr-4": {
-      "...": "PSR-4 values"
-    },
-    "files": [
-      "app/Tools/helpers.php"
-    ]
-  }
-}
 ```
 
 
@@ -118,12 +109,18 @@ class Kernel extends HttpKernel
 ```
 
 Change these in `App/Http/Middleware/Authenticate.php` in `redirectTo` method like below:
+
 ```php
 protected function redirectTo($request)
 {
-    if (! $request->expectsJson()) {
-        return route('panel.login'); // change this section to `return route('panel.login')`
-    }
+        if ($request->expectsJson()) {
+            return response()->json([
+                'title' => 'access denied',
+                'text' => 'unauthorized ...!',
+                'type' => 'error'
+            ], Response::HTTP_FORBIDDEN);
+        }
+        return route('panel.login');
 }
 ```
 
@@ -133,6 +130,8 @@ add admin panel routes file `routes/admin.php` to `App/Providers/RouteServicePro
 </p>
 Look carefully:
 
+#### **For Run project With Virtual Domain:**
+
 ```php
 public function boot()
 {
@@ -141,6 +140,25 @@ public function boot()
         Route::middleware('web')
                 ->namespace($this->namespace)
                 ->domain(config('supernova.management_url'))
+                ->group(base_path('routes/admin.php')); // #1 add admin panel routes (admin.php)
+        
+        Route::middleware('web')
+                ->namespace($this->namespace)
+                ->domain(config('app.url'))
+                ->group(base_path('routes/web.php')); // #2 web.php routes
+    });
+}
+```
+
+#### **For Run project With Cli Serving (`php artisan serve`):**
+
+```php
+public function boot()
+{
+    $this->routes(function () {
+        // other routes file
+        Route::middleware('web')
+                ->namespace($this->namespace)
                 ->group(base_path('routes/admin.php')); // #1 add admin panel routes (admin.php)
         
         Route::middleware('web')
@@ -191,7 +209,7 @@ php artisan migrate --seed              // "Without" Drop All Tables & Migrate a
 ### Method #2  ====> Setup without virtual host
 1) publish basic routes:
   ```bash
-  php artisan vendor:publish --tag=basic-routes --force
+  php artisan supernova:publish supernova-basic-routes --force
   ```
 2) serve app with command:
 ```bash
