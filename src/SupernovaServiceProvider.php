@@ -37,11 +37,6 @@ class SupernovaServiceProvider extends ServiceProvider
 
     protected function offerPublishing(): void
     {
-        if (!function_exists('config_path')) {
-            // function not available and 'publish' not relevant in `Lumen`
-            return;
-        }
-
         $this->publishBaseResource();
 
         $this->publishMigrations();

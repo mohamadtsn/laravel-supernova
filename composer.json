@@ -13,10 +13,13 @@
     ],
     "require": {
         "php": "^8.0|^8.1",
-        "spatie/laravel-permission": "^5.5.3",
-        "yoeunes/toastr": ">=1.2",
-        "biscolab/laravel-recaptcha": ">=5.4",
-        "realrashid/sweet-alert": ">=5.0"
+        "illuminate/support": "^10.0",
+        "illuminate/routing": "^10.0",
+        "illuminate/auth": "^10.0",
+        "spatie/laravel-permission": "^5.10",
+        "biscolab/laravel-recaptcha": "^6.0",
+        "realrashid/sweet-alert": "^7.0",
+        "mohamadtsn/laravel-repository": "^2.0"
     },
     "minimum-stability": "dev",
     "autoload": {
@@ -38,7 +41,6 @@
                 "Supernova": "Mohamadtsn\\Supernova\\Facade\\Supernova",
                 "Menu": "Mohamadtsn\\Supernova\\Facade\\Menu",
                 "SupernovaSweetAlert": "Mohamadtsn\\Supernova\\Classes\\Notifications\\SweetAlert\\Facades\\SupernovaSweetAlert",
-                "SupernovaToaster": "Mohamadtsn\\Supernova\\Classes\\Notifications\\Toaster\\Facades\\SupernovaToaster"
             }
         }
     }
