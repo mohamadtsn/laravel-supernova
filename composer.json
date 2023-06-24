@@ -40,7 +40,7 @@
             "aliases": {
                 "Supernova": "Mohamadtsn\\Supernova\\Facade\\Supernova",
                 "Menu": "Mohamadtsn\\Supernova\\Facade\\Menu",
-                "SupernovaSweetAlert": "Mohamadtsn\\Supernova\\Classes\\Notifications\\SweetAlert\\Facades\\SupernovaSweetAlert",
+                "SupernovaSweetAlert": "Mohamadtsn\\Supernova\\Classes\\Notifications\\SweetAlert\\Facades\\SupernovaSweetAlert"
             }
         }
     }
