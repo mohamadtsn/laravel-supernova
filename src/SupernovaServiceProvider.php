@@ -87,7 +87,6 @@ class SupernovaServiceProvider extends ServiceProvider
             __DIR__ . '/../config/supernova.php' => config_path('supernova.php'),
             __DIR__ . '/../config/permission.php' => config_path('permission.php'),
             __DIR__ . '/../config/sweetalert.php' => config_path('sweetalert.php'),
-            __DIR__ . '/../config/supernova-toaster.php' => config_path('supernova-toaster.php'),
         ], 'supernova-config');
 
         $this->publishes([
