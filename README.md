@@ -21,7 +21,7 @@ composer require mohamadtsn/laravel-supernova
 __Publishing Base Vendor Files__
 
 ```bash
-php artisan supernova:publish [tags] --force
+php artisan supernova:publish --force
 ```
 
 ### **Tag list:**
