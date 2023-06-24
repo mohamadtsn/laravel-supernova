@@ -34,7 +34,6 @@
         "laravel": {
             "providers": [
                 "Mohamadtsn\\Supernova\\SupernovaServiceProvider",
-                "Mohamadtsn\\Supernova\\Classes\\Notifications\\Toaster\\SupernovaToasterServiceProvider",
                 "Mohamadtsn\\Supernova\\Classes\\Notifications\\SweetAlert\\SupernovaSweetAlertServiceProvider"
             ],
             "aliases": {
