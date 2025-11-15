@@ -10,6 +10,11 @@
 
 -----------------------
 
+## Requirements
+
+- PHP 8.1 or higher
+- Laravel 10.x or 11.x
+
 ## Installation: :arrow_down:
 
 ```bash
