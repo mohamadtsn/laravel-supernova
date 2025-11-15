@@ -10,6 +10,11 @@
 
 -----------------------
 
+## Requirements
+
+- PHP 8.1 or higher
+- Laravel 10.x or 11.x
+
 ## Installation: :arrow_down:
 
 ```bash
@@ -21,7 +26,7 @@ composer require mohamadtsn/laravel-supernova
 __Publishing Base Vendor Files__
 
 ```bash
-php artisan supernova:publish [tags] --force
+php artisan supernova:publish --force
 ```
 
 ### **Tag list:**

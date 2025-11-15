@@ -3,7 +3,7 @@
     "description": "it's a basic Management panel for laravel application",
     "type": "library",
     "license": "MIT",
-    "keywords": ["laravel", "laravel-supernova", "laravel8-package", "PHP", "laravel8", "admin-panel", "laravel admin", "laravel-metronic", "laravel-admin-panel"],
+    "keywords": ["laravel", "laravel-supernova", "laravel10-package", "laravel11-package", "PHP", "laravel10", "laravel11", "admin-panel", "laravel admin", "laravel-metronic", "laravel-admin-panel"],
     "homepage": "https://github.com/mohamadtsn/laravel-supernova",
     "authors": [
         {
@@ -12,14 +12,14 @@
         }
     ],
     "require": {
-        "php": "^8.0|^8.1",
-        "illuminate/support": "^10.0",
-        "illuminate/routing": "^10.0",
-        "illuminate/auth": "^10.0",
-        "spatie/laravel-permission": "^5.10",
-        "biscolab/laravel-recaptcha": "^6.0",
+        "php": "^8.1|^8.2|^8.3",
+        "illuminate/support": "^10.0|^11.0",
+        "illuminate/routing": "^10.0|^11.0",
+        "illuminate/auth": "^10.0|^11.0",
+        "spatie/laravel-permission": "^5.10|^6.0",
+        "biscolab/laravel-recaptcha": "^6.0|^7.0",
         "realrashid/sweet-alert": "^7.0",
-        "mohamadtsn/laravel-repository": "^2.0"
+        "mohamadtsn/laravel-repository": "^2.0|^3.0"
     },
     "minimum-stability": "dev",
     "autoload": {
@@ -34,7 +34,6 @@
         "laravel": {
             "providers": [
                 "Mohamadtsn\\Supernova\\SupernovaServiceProvider",
-                "Mohamadtsn\\Supernova\\Classes\\Notifications\\Toaster\\SupernovaToasterServiceProvider",
                 "Mohamadtsn\\Supernova\\Classes\\Notifications\\SweetAlert\\SupernovaSweetAlertServiceProvider"
             ],
             "aliases": {
